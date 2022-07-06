@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-hoy_h!qpvf-v0@dcjd!oki+4-3w+w8^q_89n9(5c!4-f$&#_a)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['egorsapon.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'egorsapon.pythonanywhere.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
