@@ -1,9 +1,9 @@
+from time import strftime
+import datetime
 from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
-import datetime
-from time import strftime
 
 now = datetime.datetime.now()
 time_string = strftime("%H:%M:%S")
