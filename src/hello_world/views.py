@@ -1,6 +1,5 @@
 
 from django.utils.timezone import datetime
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from hello_world.forms import LogMessageForm
@@ -40,4 +39,4 @@ def log_message(request):
             message.save()
             return redirect("home")
     else:
-        return render(request, "hello/log_message.html", {"form": form})
+        return render(request, "hello_world/log_message.html", {"form": form})
