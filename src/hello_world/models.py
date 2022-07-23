@@ -14,6 +14,8 @@ class PublishingHous(models.Model):
         blank=True,
         null=True
     )
+    def __str__(self):
+        pass
 
 
 class LogMessage(models.Model):
