@@ -123,7 +123,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/egorsapon/Django_test/static'
+STATICFILES_DIRS = [
+    BASE_DIR / "hello_world/static",
+    ]
+#STATIC_ROOT = '/home/egorsapon/Django_test/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/egorsapon/Django_test/media'
 

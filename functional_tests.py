@@ -11,15 +11,12 @@ class BasicInstallTest(unittest.TestCase):
         self.browser.quit()
 
     def test_can_start_a_list_and_retrieve_it_later(self):
-        # Edith has heard about a cool new online to-do app. She goes
+        # Edith has heard about a cool new online book shop. She goes
         # to check out its homepage
         self.browser.get('http://127.0.0.1:8000/')
+        # She notices the page title and header mention book shop
+        self.assertIn('Ягора', self.browser.title)
 
-        # She notices the page title and header mention to-do lists
-        self.assertIn('Django test', self.browser.title)
-
-
-        # She is invited to enter a to-do item straight away
 
 if __name__ == '__main__':
     unittest.main()
