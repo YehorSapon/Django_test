@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hello_world',
     'list_for_proj',
+    'y_bookside',
 ]
 
 MIDDLEWARE = [
@@ -122,10 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "hello_world/static",
-    ]
+    BASE_DIR / "y_bookside/static",
+]
 #STATIC_ROOT = '/home/egorsapon/Django_test/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/egorsapon/Django_test/media'

@@ -28,17 +28,14 @@
             <a href="/"><li><i class="fa-solid fa-address-card"></i> Кантакты</li></a>
         </ul>
     </aside>
-    <div id="content">
-        <main>
-            <div id="header">
+    <main>
+        <div id="header">
                 {%block header%}
                 <a href="/" >
                     <img src="{% static 'hello_world/img/logo.png' %}" class="logo_simple" alt="Company Logo">
-                    My shop
                 </a>
-                {%endblock header%}
+                {%endblock header %}
             </div>
-
             <div id="subheader">
                 {%block cart%}
                 <div class="cart">
@@ -46,10 +43,12 @@
                 {%endblock cart%}
                 </div>
             </div>
+            <div id="content">
         {% block content %}
+        {% lorem 9 p random %}
         {% endblock content%}
-        </main>
-    </div>
+        </div>
+    </main>
     <div id="everything-footer">
         {% block everything-footer %}
         <div class="logo">
@@ -86,7 +85,7 @@
             </ul>
         </div>
 
-           {% endblock everything-footer %}
+        {% endblock everything-footer %}
     </div>
 </body>
 </html>

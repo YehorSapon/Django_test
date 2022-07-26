@@ -13,7 +13,7 @@ def hello_world_view(request):
             }
     return render(
         request,
-        'hello_world/hello.html',
+        'y_bookside/hello.html',
          context
     )
 
