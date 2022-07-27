@@ -26,14 +26,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'egorsapon.pythonanywhere.com',
-    '127.0.0.1',
-]
-
-
+ALLOWED_HOSTS = ["*"]
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,10 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hello_world',
-    'list_for_proj',
-    'y_bookside',
 ]
+
+INSTALLED_APPS += [
+    'y_bookside',
+    'reference',
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,7 +80,7 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -122,11 +119,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "y_bookside/static",
-]
+    BASE_DIR / "y_bookside/static/",
+    ]
 #STATIC_ROOT = '/home/egorsapon/Django_test/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/egorsapon/Django_test/media'

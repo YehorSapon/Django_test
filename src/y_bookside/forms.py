@@ -1,5 +1,6 @@
 from django import forms
-from hello_world.models import LogMessage
+from y_bookside.models import LogMessage
+
 
 class LogMessageForm(forms.ModelForm):
     class Meta:

@@ -3,22 +3,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-
-class PublishingHous(models.Model):
-    name = models.CharField(
-        verbose_name="Publishing Hous's name",
-        max_length=50,
-    )
-    description = models.TextField(
-        verbose_name="Description",
-        blank=True,
-        null=True
-    )
-
-    def __str__(self):
-        return self.name
-
-
 class LogMessage(models.Model):
     message = models.CharField(max_length=300)
     log_date = models.DateTimeField("date logged")

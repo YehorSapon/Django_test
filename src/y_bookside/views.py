@@ -1,16 +1,16 @@
 from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
+from y_bookside.forms import LogMessageForm
 
-
-# Create your views here.
 
 def home_page(request):
     context = {
             'date': datetime.now()
             }
     return render(request,
-            'y_bookside/home.html',
-            context)
+                  'y_bookside/home.html',
+                  context)
+
 
 def log_message(request):
     form = LogMessageForm(request.POST or None)
