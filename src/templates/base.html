@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +9,15 @@
     <meta name="keywords" content="books, seo, korsina">
     <meta name="author" content="Yehor Sapon">
     <title>{% block title %} Кнігі ў Ягора {% endblock title %}</title>
-    <!-- CSS only -->
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'js/bootstrap.min.js' %}" >
+
+
 <body>
     <aside>
-        <a href="/" >
+        <a href="/" ><img src="{% static 'img/logo.png' %}" alt="Company Logo">
         </a><br>
         <span class="logo">SB</span>
         <h3> Навігацыя</h3>
@@ -54,16 +59,14 @@
             <div>
             <p class="headings-footer">Информация</p>
             <ul>
-            <li><a href="/gift">Сертификаты</a></li>
-            <li><a href="/spravka/">Справочники</a></li>
-            <!-- 					<li><a href="/vacancy">Вакансии</a></li> -->
-            <li><a href="/ad">Реклама</a></li>
-            <!-- 					<noindex><li><a target="_blank" rel="nofollow" href="https://partners.itproger.com/">Партнёрка</a></li></noindex> -->
+                <li><a href="/gift">Сертификаты</a></li>
+                <li><a href="/spravka/">Справочники</a></li>
+                <li><a href="/ad">Реклама</a></li>
             </ul>
             <ul class="last">
-            <li><a href="/about">О нас</a></li>
-            <li><a href="/rights">Соглашение</a></li>
-            <li><a href="/sitemap">Карта сайта</a></li>
+                <li><a href="/about">О нас</a></li>
+                <li><a href="/rights">Соглашение</a></li>
+                <li><a href="/sitemap">Карта сайта</a></li>
             </ul>
         </div>
         <div>
