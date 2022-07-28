@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from .forms import AddAuthorForm
-from .models import Author
 from django.views import generic
+# from django.shortcuts import render, redirect
+# from .forms import AddAuthorForm
+# from .models import Author
+# from . import models
+# from . import forms
 # Create your views here.
 
 '''
@@ -25,3 +27,15 @@ def add_author(request):
     return render(request,
                   'reference/add_author.html', context=context)
 '''
+
+def add_author(request):
+    pass
+
+class AuthorDetail(generic.DetailView):
+    template_name='reference/items_detal.html'
+    model = models.Author
+
+class AuthorAdd(generic.CreateView):
+    template_name = 'reference/items_edit.html'
+    form_class = form.AddAuthorForm
+    model = models.Author

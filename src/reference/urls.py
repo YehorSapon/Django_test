@@ -1,5 +1,4 @@
 """proj URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -19,5 +18,6 @@ from reference import views
 
 
 urlpatterns = [
-    path('add_author/', views.add_author, name='add_author'),
+    path('author/detail/<int:pk>/', views.AuthorDetail.as_view()),
+    path('author/add/', views.AuthorAdd.as_view()),
     ]
