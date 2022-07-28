@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Author(models.Model):
     name = models.CharField(
@@ -32,6 +31,36 @@ class Author(models.Model):
 class PublishingHous(models.Model):
     name = models.CharField(
         verbose_name="Publishing Hous's name",
+        max_length=50,
+    )
+    description = models.TextField(
+        verbose_name="Description",
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Series_book(models.Model):
+    name = models.CharField(
+        verbose_name="name of series",
+        max_length=50,
+    )
+    description = models.TextField(
+        verbose_name="Description",
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Genre_book(models.Model):
+    name = models.CharField(
+        verbose_name="name of genre",
         max_length=50,
     )
     description = models.TextField(

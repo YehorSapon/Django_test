@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{title}}
+{% endblock title %}
+
 {% block content %}
-    <p> <span class="message">Hello, there!</span></p>
+    <h1>Contacts!</h1>
     It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.
-    {% lorem 5 p random %}
 {% endblock content%}

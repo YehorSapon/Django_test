@@ -9,7 +9,27 @@ def home_page(request):
             }
     return render(request,
                   'y_bookside/home.html',
-                  context)
+                  context=context)
+
+
+def page_about(request):
+    context = {
+            'date': datetime.now(),
+            'title': 'About',
+            }
+    return render(request,
+                  'y_bookside/about.html',
+                  context=context)
+
+
+def page_contacts(request):
+    context = {
+            'date': datetime.now(),
+            'title': 'Contacts',
+            }
+    return render(request,
+                  'y_bookside/contacts.html',
+                  context=context)
 
 
 def log_message(request):
@@ -23,4 +43,4 @@ def log_message(request):
             message.save()
             return redirect("home")
     else:
-        return render(request, "y_bookside/log_message.html", context)
+        return render(request, "y_bookside/log_message.html", context=context)

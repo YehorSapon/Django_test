@@ -23,8 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 urlpatterns += [
-                path('', RedirectView.as_view(url='y_bookside/', permanent=True)),
+                path('', RedirectView.as_view(url='y_bookside/',
+                                              permanent=True)),
                 path('y_bookside/', include("y_bookside.urls")),
-                path('reference/', include("reference.urls")),]
+                path('reference/', include("reference.urls")), ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
