@@ -1,15 +1,15 @@
 from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
 from y_bookside.forms import LogMessageForm
+from django.views.generic import TemplateView
 
+class HomePage(TemplateView):
+    template_name = "y_bookside/home.html"
 
-def home_page(request):
-    context = {
-            'date': datetime.now()
-            }
-    return render(request,
-                  'y_bookside/home.html',
-                  context=context)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["date"] = datetime.now
+        return context
 
 
 def page_about(request):

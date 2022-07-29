@@ -17,8 +17,9 @@ from django.urls import path
 from y_bookside import views
 
 
+
 urlpatterns = [
-    path("", views.home_page, name="home"),
+    path("", views.HomePage.as_view()),
     path("log/", views.log_message, name="log"),
     path("about/", views.page_about, name="about"),
     path("contacts/", views.page_contacts, name="contacts"),

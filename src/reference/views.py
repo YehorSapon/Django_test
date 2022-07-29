@@ -1,9 +1,11 @@
-from django.views import generic
+#from django.views import generic
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView
 # from django.shortcuts import render, redirect
-# from .forms import AddAuthorForm
+from . import forms
 # from .models import Author
 from . import models
- from . import forms
+# from . import forms
 # Create your views here.
 
 '''
@@ -28,15 +30,43 @@ def add_author(request):
                   'reference/add_author.html', context=context)
 '''
 
-def add_author(request):
+class AuthorList(ListView):
+    template_name = "reference/all_item.html"
+    model = models.Author
+
+    def get_queryset(self):
+        qs = self.model.objects.all()
+        return qs
+
+
+    #def get_context_data(self, *args, **kwargs):
+    #    context = super().get_context_data(*args, **kwargs)
+    #    context["date"] = datetime.now
+    #    return context
+
+
+def add_author_view(request):
+    if request.method == 'POST':
+        form = forms.AddAuthorForm(request.POST)
+        if form.is_valid():
+           form.save()
     pass
 
-class AuthorDetail(generic.DetailView):
-    template_name='reference/items_detal.html'
-    model = models.Author
 
-class AuthorAdd(generic.CreateView):
-    template_name = 'reference/items_edit.html'
-    form_class =
-    form.AddAuthorForm
+def edit_author_view(request):
+    if request.method == 'POST':
+        form = forms.AddAuthorForm(request.POST)
+        if form.is_valid():
+           form.save()
+        return HttpResponseRedirect(request, 'reference/author/{form.instance.pk}')
+    elif request.method == 'GET':
+        author = models.Author.objects.get(pk=pk)
+        form = forms.AddAuthorForm(author)
+        return render(request, 'item_add.html', context={'author': author, 'form': form})
+
+
+'''
+class AuthorDetail(generic.DetailView):
+    template_name = 'reference/items_detal.html'
     model = models.Author
+'''

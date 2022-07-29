@@ -10,14 +10,14 @@
     <meta name="author" content="Yehor Sapon">
     <title>{% block title %} Кнігі ў Ягора {% endblock title %}</title>
     {% load static %}
-    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'js/bootstrap.min.js' %}" >
-
+    <link href="{% static 'bs/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'bs/css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'bs/js/bootstrap.min.js' %}" >
+</head>
 
 <body>
     <aside>
-        <a href="/" ><img src="{% static 'img/logo.png' %}" alt="Company Logo">
+        <a href="/" ><img src="{% static 'bs/img/logo.svg' %}" alt="Company Logo">
         </a><br>
         <span class="logo">SB</span>
         <h3> Навігацыя</h3>
@@ -29,23 +29,21 @@
     </aside>
     <main>
         <div id="header">
-                {%block header%}
+            {%block header%}
                 <a href="/" >
-                    <img src="{% static 'img/logo.png' %}" class="logo_simple" alt="Company Logo">
+                    <img src="{% static 'bs/img/logo.png' %}" class="logo_simple" alt="Company Logo">
                 </a>
-                {%endblock header %}
-            </div>
-            <div id="subheader">
-                {%block cart%}
-                <div class="cart">
-                Your cart is empty.
-                {%endblock cart%}
-                </div>
-            </div>
-            <div id="content">
-        {% block content %}
-            {% lorem 9 p random %}
-        {% endblock content%}
+            {%endblock header %}
+        </div>
+        <div id="subheader">
+                {%block subheader%}
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                {%endblock subheader%}
+        </div>
+        <div id="content">
+                {% block content %}
+                    {% lorem 6 p random %}
+                {% endblock content%}
         </div>
     </main>
     <div id="everything-footer">
@@ -72,7 +70,7 @@
         <div>
             <p class="headings-footer">Аккаунт</p>
             <ul>
-            <li><a href="/user/">Войти</a></li>
+            <li><a href="/admin/">Войти</a></li>
             <li><a href="/reg">Регистрация</a></li>
             <li><a href="/kontakti">Обратная связь</a></li>
             </ul>

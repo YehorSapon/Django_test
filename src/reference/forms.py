@@ -1,8 +1,20 @@
 from django import forms
+from reference import models
 
 
-class AddAuthorForm(forms.Form):
-    name = forms.CharField(
+class AddAuthorForm(forms.ModelForm):
+    class Meta:
+        model = models.Author
+        fields = [
+            'name',
+            'second_name',
+            'surname',
+            'date_birth',
+            'date_death'
+            ]
+
+
+'''  name = forms.CharField(
         max_length=25,
         help_text="Enter author name",
         )
@@ -23,3 +35,4 @@ class AddAuthorForm(forms.Form):
         help_text="Enter author's year of death",
         required=False,
         )
+'''
