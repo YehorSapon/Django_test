@@ -40,7 +40,9 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'y_bookside',
     'reference',
+    'book',
     'crispy_forms',
+    'fontawesomefree',
     'crispy_bootstrap5',
 ]
 
@@ -122,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR / 'static/bs')
+STATIC_ROOT = os.path.join(BASE_DIR / 'static/bs', 'static/ff' )
 STATICFILES_DIRS = [
                     BASE_DIR / 'static'
                     ]

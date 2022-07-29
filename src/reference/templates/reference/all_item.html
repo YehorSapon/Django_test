@@ -18,12 +18,12 @@
           </tr>
         </thead>
         <tbody>
-            {% for obgect in object_list %}
+            {% for author in author_list %}
             <tr>
-                <th scope="row">{{object.pk}}</th>
-                    <td>{{object.name}}</td>
-                    <td>{{object.surname}}</td>
-                    <td>{{object.date_birgh}}</td>
+                <th scope="row">{{author.pk}}</th>
+                    <td>{{author.name}}</td>
+                    <td>{{author.surname}}</td>
+                    <td>{{author.date_birgh}}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -33,4 +33,3 @@
 
 
 {% endblock content %}
-
