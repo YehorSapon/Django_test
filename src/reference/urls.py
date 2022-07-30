@@ -18,6 +18,6 @@ from reference import views
 
 
 urlpatterns = [
-    path('authorlist', views.AuthorList.as_view())
+    path('list_author', views.AuthorList.as_view(), name='list_author')
 
     ]

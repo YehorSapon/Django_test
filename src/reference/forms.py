@@ -1,5 +1,13 @@
 from django import forms
 from reference import models
+from reference.models import Author
+from django.views.generic import ListView
+
+
+class AuthorListView(ListView):
+    queryset = Author.objects.all()
+    context_object_name = 'author'
+    template_name = 'reference/list_author.html'
 
 
 class AddAuthorForm(forms.ModelForm):
@@ -12,6 +20,8 @@ class AddAuthorForm(forms.ModelForm):
             'date_birth',
             'date_death'
             ]
+
+
 
 
 '''  name = forms.CharField(

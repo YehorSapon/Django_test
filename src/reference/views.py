@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 # from django.shortcuts import render, redirect
 from . import forms
-# from .models import Author
+from .models import Author
 from . import models
 # from . import forms
 # Create your views here.
@@ -31,7 +31,8 @@ def add_author(request):
 '''
 
 class AuthorList(ListView):
-    template_name = "reference/all_item.html"
+    authors = Author.objects.all()
+    template_name = "reference/list_author.html"
     model = models.Author
 
     def get_queryset(self):
