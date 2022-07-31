@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-
 class Author(models.Model):
     name = models.CharField(
         max_length=25,
@@ -27,10 +26,11 @@ class Author(models.Model):
         null=True,)
 
     def get_absolute_url(self):
-        return reverse('one-author', kwargs={'pk': self.pk}, current_app='reference')
+        return reverse('author', kwargs={'pk': self.pk},
+                       current_app='reference')
 
     def __str__(self):
-        return str(self.id) + '. ' + self.name + '. ' + self.surname
+        return self.surname
 
 
 class PublishingHous(models.Model):
