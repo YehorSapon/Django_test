@@ -1,11 +1,10 @@
-#from django.views import generic
+from django.views import generic
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView
 # from django.shortcuts import render, redirect
 from . import forms
-from .models import Author
-from . import models
-# from . import forms
+from reference import models
+from django.urls import reverse_lazy
+
 # Create your views here.
 
 '''
@@ -30,14 +29,10 @@ def add_author(request):
                   'reference/add_author.html', context=context)
 '''
 
-class AuthorList(ListView):
-    authors = Author.objects.all()
+class AuthorList(generic.ListView):
     template_name = "reference/list_author.html"
     model = models.Author
 
-    def get_queryset(self):
-        qs = self.model.objects.all()
-        return qs
 
 
     #def get_context_data(self, *args, **kwargs):

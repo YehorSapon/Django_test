@@ -29,55 +29,25 @@
         </ul>
     </aside>
     <main>
-        <div id="header">
+
             {%block header%}
                 <a href="/" >
                     <img src="{% static 'bs/img/logo.png' %}" class="logo_simple" alt="Company Logo">
                 </a>
             {%endblock header %}
-        </div>
-        <div id="subheader">
-                {%block subheader%}
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                {%endblock subheader%}
-        </div>
-        <div id="content">
+
+
+            {%block subheader%}
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            {%endblock subheader%}
+
+
                 {% block content %}
                     {% lorem 6 p random %}
                 {% endblock content%}
-        </div>
+        
     </main>
-    <div id="everything-footer">
-        {% block everything-footer %}
-        <div class="logo">
-            <div id="to_top" onclick="return toTop()"><i class="fas fa-chevron-up"></i>
-            </div>
-            <a href="/" title="На главную страницу">
-            <p>Ан-лайн кніжная крама</p>
-        <div class="links">
-            <div>
-            <p class="headings-footer">Информация</p>
-            <ul>
-                <li><a href="/gift">Сертификаты</a></li>
-                <li><a href="/spravka/">Справочники</a></li>
-                <li><a href="/ad">Реклама</a></li>
-            </ul>
-            <ul class="last">
-                <li><a href="/y_bookside/about">О нас</a></li>
-                <li><a href="/y_bookside/contacts">Контакты</a></li>
-                <li><a href="/sitemap">Карта сайта</a></li>
-            </ul>
-        </div>
-        <div>
-            <p class="headings-footer">Аккаунт</p>
-            <ul>
-            <li><a href="/admin/">Войти</a></li>
-            <li><a href="/reg">Регистрация</a></li>
-            <li><a href="/kontakti">Обратная связь</a></li>
-            </ul>
-        </div>
-
-        {% endblock everything-footer %}
-    </div>
+    <footer>
+    </footer>
 </body>
 </html>

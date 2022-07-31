@@ -47,6 +47,11 @@ aside{
     border-right: #c2b6c9 solid 5px;
     text-decoration: none;
     }
+main{
+    width: 80%;
+    padding: 2.5%;
+    text-decoration: none;
+}
 aside img {
     width: 80px;
     float: left;

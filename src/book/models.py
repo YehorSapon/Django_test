@@ -14,21 +14,17 @@ COVER = (
 
 class BookCard(models.Model):
     """On save, update information about book."""
-    author = models.ForeignKey(
+    author = models.ManyToManyField(
         Author,
-        on_delete=models.CASCADE,
         related_name='author_book')
-    publ_hous = models.ForeignKey(
+    publ_hous = models.ManyToManyField(
         PublishingHous,
-        on_delete=models.CASCADE,
         related_name='publ_house_book')
-    series = models.ForeignKey(
+    series = models.ManyToManyField(
         Series_book,
-        on_delete=models.CASCADE,
         related_name='seres_book')
-    genre = models.ForeignKey(
+    genre = models.ManyToManyField(
         Genre_book,
-        on_delete=models.CASCADE,
         related_name='seres_book')
     title = models.CharField(
         max_length=255,

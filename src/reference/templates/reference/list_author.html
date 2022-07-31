@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    {{ object.name }}
-{% endblock title %}
+{% block title %}Author list{% endblock title %}
+
+{% block header %} list {% endblock header %}
 
 
 {% block content %}
-    {{title}}
-
-    {% block subcontent %}
-<h1>My Blog</h1>
-{% for object in authors %}
-<h2>
-<a href="{{ author.get_absolute_url }}">
-{{ object.name }}
-</a>
-</h2>
-<p class="date">
-Published {{ object.surname }} by {{ object.secondname }}
-</p>
-{% endfor %}
-{% endblock %}
-
-
-
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Surname</th>
+            <th scope="col">User</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for object in author_list %}
+            <tr>
+                <th scope="row">{{object.pk}}</th>
+                <td>{{object.name}}</td>
+                <td>{{object.surname}}</td>
+                <td>{{user}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% lorem 6 p random %}
 {% endblock content %}

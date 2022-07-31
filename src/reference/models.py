@@ -25,7 +25,7 @@ class Author(models.Model):
         null=True,)
 
     def __str__(self):
-        return self.surname
+        return str(self.id) + '. ' + self.name + '. ' + self.surname
 
 
 class PublishingHous(models.Model):
