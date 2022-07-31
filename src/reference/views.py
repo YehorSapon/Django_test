@@ -1,9 +1,9 @@
 from django.views import generic
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
 from . import forms
 from reference import models
 from django.urls import reverse_lazy
+# from django.shortcuts import render
+# from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -29,6 +29,7 @@ def add_author(request):
     return render(request,
                   'reference/add_author.html', context=context)
 '''
+# Author views
 
 
 class AuthorList(generic.ListView):
@@ -64,6 +65,7 @@ class AuthorAdd(generic.CreateView):
         return reverse_lazy("reference:author", kwargs={'pk': self.object.pk})
 
 
+"""
 def add_author_view(request):
     if request.method == 'POST':
         form = forms.AddAuthorForm(request.POST)
@@ -77,15 +79,9 @@ def edit_author_view(request):
         form = forms.AddAuthorForm(request.POST)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect(request, 'reference/author/{form.instance.pk}')
+        return HttpResponseRedirect(request, 'reference/author/add/<int:pk>')
     elif request.method == 'GET':
         author = models.Author.objects.get(pk=pk)
         form = forms.AddAuthorForm(author)
         return render(request, 'item_add.html', context={'author': author, 'form': form})
-
-
-'''
-class AuthorDetail(generic.DetailView):
-    template_name = 'reference/items_detal.html'
-    model = models.Author
-'''
+"""
