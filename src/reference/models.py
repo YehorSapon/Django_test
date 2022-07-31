@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 
 class Author(models.Model):
@@ -23,6 +25,9 @@ class Author(models.Model):
         help_text="Enter author's year of death",
         blank=True,
         null=True,)
+
+    def get_absolute_url(self):
+        return reverse('one-author', kwargs={'pk': self.pk}, current_app='reference')
 
     def __str__(self):
         return str(self.id) + '. ' + self.name + '. ' + self.surname

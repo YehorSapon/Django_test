@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Author list{% endblock title %}
-
-{% block header %} list {% endblock header %}
-
-
+{% block title %}Authors list{% endblock title %}
+<br>
+{% block header %}Authors list{% endblock header %}
+<br>
+<br>
+{% block subheader %}-----------------{% endblock subheader %}
+<br>
 {% block content %}
-    <table class="table">
-        <thead>
+    <table class="table table-sm">
+        <thead class="table-light">
           <tr>
             <th scope="col">#</th>
             <th scope="col">First</th>
@@ -15,7 +17,7 @@
             <th scope="col">User</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             {% for object in author_list %}
             <tr>
                 <th scope="row">{{object.pk}}</th>
@@ -26,5 +28,6 @@
             {% endfor %}
         </tbody>
     </table>
+    <br>
     {% lorem 6 p random %}
 {% endblock content %}

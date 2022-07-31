@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,43 +11,35 @@
     <title>{% block title %} Кнігі ў Ягора {% endblock title %}</title>
     {% load static %}
     <link href="{% static 'bs/css/bootstrap.min.css'%}" rel="stylesheet">
-    <link href="{% static 'bs/css/base.css' %}" rel="stylesheet">
     <link href="{% static 'bs/js/bootstrap.min.js' %}" >
     <link href="{% static 'ff/css/all.min.css' %}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <aside>
-        <a href="/" ><img src="{% static 'bs/img/logo.svg' %}" alt="Company Logo">
-        </a><br>
-        <span class="logo">SB</span>
-        <h3> Навігацыя</h3>
-        <ul>
-            <a href="/"><li><i class="fa-solid fa-house" ></i> Галоўная</li></a>
-            <a href="/"><li><i class="fa-solid fa-file-lines"></i> Аб магазіне</li></a>
-            <a href="/"><li><i class="fa-solid fa-address-card"></i> Кантакты</li></a>
-        </ul>
-    </aside>
+
     <main>
 
-            {%block header%}
-                <a href="/" >
-                    <img src="{% static 'bs/img/logo.png' %}" class="logo_simple" alt="Company Logo">
-                </a>
-            {%endblock header %}
+        {% include "base_navbar.html" %}
+        {% block header%}
+            <br>
+            HEADER
+            <br>
+        {% endblock header %}
+        <br>
+        {% block subheader %}
+        <br>
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        <br>
+        {% endblock subheader %}
+        {% block content %}
+        <br>
+        {% lorem 6 p random %}
+        <br>
+        {% endblock content%}
 
-
-            {%block subheader%}
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            {%endblock subheader%}
-
-
-                {% block content %}
-                    {% lorem 6 p random %}
-                {% endblock content%}
-        
     </main>
     <footer>
+        FOOTER
     </footer>
 </body>
 </html>

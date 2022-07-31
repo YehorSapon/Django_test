@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from y_bookside import views
-
+app_name = 'y_bookside'
 
 
 urlpatterns = [

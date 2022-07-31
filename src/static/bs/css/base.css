@@ -47,6 +47,12 @@ aside{
     border-right: #c2b6c9 solid 5px;
     text-decoration: none;
     }
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
 main{
     width: 80%;
     padding: 2.5%;

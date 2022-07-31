@@ -1,9 +1,10 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
-# from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 from . import forms
 from reference import models
 from django.urls import reverse_lazy
+
 
 # Create your views here.
 
@@ -29,23 +30,45 @@ def add_author(request):
                   'reference/add_author.html', context=context)
 '''
 
+
 class AuthorList(generic.ListView):
-    template_name = "reference/list_author.html"
+    template_name = "reference/author_list.html"
     model = models.Author
 
 
+class AuthorView(generic.DetailView):
+    template_name = "reference/author.html"
+    model = models.Author
 
-    #def get_context_data(self, *args, **kwargs):
-    #    context = super().get_context_data(*args, **kwargs)
-    #    context["date"] = datetime.now
-    #    return context
+
+class AuthorEdit(generic.UpdateView):
+    template_name = "reference/author_add.html"
+    model = models.Author
+    form_class = forms.AddAuthorForm
+    success_url = "/reference/author/list/"
+
+
+class AuthorDelete(generic.DeleteView):
+    template_name = "reference/author-del.html"
+    model = models.Author
+    success_url = "/reference/author/list/"
+
+
+class AuthorAdd(generic.CreateView):
+    template_name = "reference/author_add.html"
+    model = models.Author
+    form_class = forms.AddAuthorForm
+    #success_url = "/reference/author-list/"
+
+    def get_success_url(self):
+        return reverse_lazy("reference:author", kwargs={'pk': self.object.pk})
 
 
 def add_author_view(request):
     if request.method == 'POST':
         form = forms.AddAuthorForm(request.POST)
         if form.is_valid():
-           form.save()
+            form.save()
     pass
 
 
@@ -53,7 +76,7 @@ def edit_author_view(request):
     if request.method == 'POST':
         form = forms.AddAuthorForm(request.POST)
         if form.is_valid():
-           form.save()
+            form.save()
         return HttpResponseRedirect(request, 'reference/author/{form.instance.pk}')
     elif request.method == 'GET':
         author = models.Author.objects.get(pk=pk)

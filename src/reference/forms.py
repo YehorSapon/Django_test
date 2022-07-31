@@ -11,6 +11,7 @@ class AuthorListView(ListView):
 
 
 class AddAuthorForm(forms.ModelForm):
+
     class Meta:
         model = models.Author
         fields = [
@@ -18,7 +19,7 @@ class AddAuthorForm(forms.ModelForm):
             'second_name',
             'surname',
             'date_birth',
-            'date_death'
+            'date_death',
             ]
 
 
