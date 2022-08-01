@@ -14,20 +14,31 @@
             <th scope="col">#</th>
             <th scope="col">First</th>
             <th scope="col">Surname</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View detail</th>
             <th scope="col">User</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
             {% for object in author_list %}
-            <tr>
-                <th scope="row">{{object.pk}}</th>
-                <td>{{object.name}}</td>
-                <td>{{object.surname}}</td>
-                <td>{{user}}</td>
-            </tr>
+              <tr>
+                  <th scope="row">{{object.pk}}</th>
+                  <td>{{object.name}}</td>
+                  <td>{{object.surname}}</td>
+                  <td><a href="{% url 'reference:author-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
+                  <td><a href="{% url 'reference:author-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+                  <td><a href="{% url 'reference:author' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
+                  <td>{{user}}</td>
+              </tr>
             {% endfor %}
         </tbody>
     </table>
+    <br>
+    <div class="bg-light clearfix">
+      <span>Click button to add author</span>
+      <a href="{% url 'reference:author-add' %}"><button type="button" class="btn btn-warning float-right">Add Author</button></a>
+    </div>
     <br>
     {% lorem 6 p random %}
 {% endblock content %}

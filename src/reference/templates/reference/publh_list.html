@@ -8,26 +8,37 @@
 {% block subheader %}-----------------{% endblock subheader %}
 <br>
 {% block content %}
-    <table class="table table-sm">
-        <thead class="table-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">User</th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            {% for object in publishinghous_list %}
-            <tr>
-                <th scope="row">{{object.pk}}</th>
-                <td>{{object.name}}</td>
-                <td>{{object.description}}</td>
-                <td>{{user}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
+<table class="table table-sm">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+      <th scope="col">View detail</th>
+      <th scope="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+      {% for object in publishing_hous_list %}
+        <tr>
+            <th scope="row">{{object.pk}}</th>
+            <td>{{object.name}}</td>
+            <td>{{object.description}}</td>
+            <td><a href="{% url 'reference:publh-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
+            <td><a href="{% url 'reference:publh-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+            <td><a href="{% url 'reference:publh' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
+            <td>{{user}}</td>
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
+<br>
+<div class="bg-light clearfix">
+<span>Click button to add Publising hous</span>
+<a href="{% url 'reference:publh-add' %}"><button type="button" class="btn btn-warning float-right">Add Publising hous</button></a>
+</div>
+<br>
     {% lorem 6 p random %}
 {% endblock content %}
