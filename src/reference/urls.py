@@ -28,6 +28,33 @@ authors_patterns = ([
     path('edit/<int:pk>/', views.AuthorEdit.as_view(), name='author-edit'),
 ])
 
+publhs_patterns = ([
+    path('list/', views.PublhList.as_view(), name='publh-list'),
+    path('<int:pk>/', views.PublhView.as_view(), name='publh'),
+    path('del/<int:pk>/', views.PublhDelete.as_view(), name='publh-del'),
+    path('add/', views.PublhAdd.as_view(), name='publh-add'),
+    path('edit/<int:pk>/', views.PublhEdit.as_view(), name='publh-edit'),
+])
+
+series_patterns = ([
+    path('list/', views.SeriesList.as_view(), name='series-list'),
+    path('<int:pk>/', views.SeriesView.as_view(), name='series'),
+    path('del/<int:pk>/', views.SeriesDelete.as_view(), name='series-del'),
+    path('add/', views.SeriesAdd.as_view(), name='series-add'),
+    path('edit/<int:pk>/', views.SeriesEdit.as_view(), name='series-edit'),
+])
+
+genres_patterns = ([
+    path('list/', views.GenreList.as_view(), name='genre-list'),
+    path('<int:pk>/', views.GenreView.as_view(), name='genre'),
+    path('del/<int:pk>/', views.GenreDelete.as_view(), name='genre-del'),
+    path('add/', views.GenreAdd.as_view(), name='genre-add'),
+    path('edit/<int:pk>/', views.GenreEdit.as_view(), name='genre-edit'),
+])
+
 urlpatterns = [
     path('author/', include(authors_patterns)),
+    path('publh/', include(publhs_patterns)),
+    path('series/', include(series_patterns)),
+    path('genre/', include(genres_patterns)),
 ]

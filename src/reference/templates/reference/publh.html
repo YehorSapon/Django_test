@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Author view{% endblock title %}
+{% block title %}Publising hous view{% endblock title %}
 
-{% block header %}Author {{ object }} view{% endblock header %}
+{% block header %}Publising hous {{ object }} view{% endblock header %}
 
 <br>
 {% block subheader %}-----------------{% endblock subheader %}
@@ -10,9 +10,6 @@
 {% block content %}
 <br>
     <b>Name:</b> {{ object.name }}<br>
-    <b>Second name:</b> {{ object.second_name }}<br>
-    <b>Surname:</b> {{ object.surname }}<br>
-    <b>Date of birht:</b> {{ object.date_birth }}<br>
-    <b>Date of death:</b> {{ object.date_birth }}<br>
-    <a href="{% url 'reference:author-list' %}">Authors list</a>
+    <b>Description:</b> {{ object.description }}<br>
+    <a href="{% url 'reference:publh-list' %}">Publising hous list</a>
 {% endblock content %}

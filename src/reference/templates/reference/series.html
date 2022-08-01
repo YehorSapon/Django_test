@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Series view{% endblock title %}
+
+{% block header %}{{ object }} view{% endblock header %}
+
+<br>
+{% block subheader %}-----------------{% endblock subheader %}
+<br>
+{% block content %}
+<br>
+    <b>Name:</b> {{ object.name }}<br>
+    <b>Second name:</b> {{ object.second_name }}<br>
+    <b>Surname:</b> {{ object.surname }}<br>
+    <b>Date of birht:</b> {{ object.date_birth }}<br>
+    <b>Date of death:</b> {{ object.date_birth }}<br>
+    <a href="{% url 'reference:series-list' %}">Seriess list</a>
+{% endblock content %}

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Publising hous list{% endblock title %}
+{% block title %}Genre list{% endblock title %}
 <br>
-{% block header %}Publising hous list{% endblock header %}
+{% block header %}Genre list{% endblock header %}
 <br>
 <br>
 {% block subheader %}-----------------{% endblock subheader %}
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody class="table-group-divider">
-            {% for object in publishinghous_list %}
+            {% for object in object_list %}
             <tr>
                 <th scope="row">{{object.pk}}</th>
                 <td>{{object.name}}</td>

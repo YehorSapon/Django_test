@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}GENRE view{% endblock title %}
+
+{% block header %}GENRE {{ object }} view{% endblock header %}
+
+<br>
+{% block subheader %}-----------------{% endblock subheader %}
+<br>
+{% block content %}
+<br>
+    <b>Name:</b> {{ object.name }}<br>
+    <b>Second name:</b> {{ object.description }}<br>
+    <a href="{% url 'reference:genre-list' %}">Genre list</a>
+{% endblock content %}

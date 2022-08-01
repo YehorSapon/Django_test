@@ -4,11 +4,11 @@
     {{ object }} delete
 {% endblock title %}
 
-{% block header %} Delete Publising hous {{ object.name }} ??{% endblock header %}
+{% block header %} Delete series {{ object.surname }} ??{% endblock header %}
 
 {% block content %}
     {{title}}
-    DELETE Publising hous
+    DELETE Series
     <form action="" method="post">
         {% csrf_token %}
             <br>
