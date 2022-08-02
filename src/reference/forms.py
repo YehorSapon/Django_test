@@ -1,6 +1,8 @@
 from django import forms
-from reference.models import Author, PublishingHous, Series_book, Genre_book
 from django.views.generic import ListView
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
+from reference.models import Author, PublishingHous, Series_book, Genre_book
 
 
 class AuthorListView(ListView):
@@ -19,6 +21,16 @@ class AddAuthorForm(forms.ModelForm):
             'date_birth',
             'date_death',
         ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = 'submit_survey'
+
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class PublhListView(ListView):

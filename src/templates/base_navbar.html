@@ -1,3 +1,5 @@
+{% load static %}
+{% load bootstrap5 %}
 <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -50,14 +52,12 @@
       -webkit-overflow-scrolling: touch;
     }
   </style>
-  {% load static %}
-  <link href="sidebars.css" rel="stylesheet">
-
+ 
 
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="{% static 'bs/img/logo.png' %}" class="logo_simple" width="80px" alt="Company Logo">
+        <img src="{% static 'img/logo.svg' %}" class="logo_simple" width="80px" alt="Company Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

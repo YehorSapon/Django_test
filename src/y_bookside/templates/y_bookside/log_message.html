@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        {% endbuttons %}
+    </form>
     <span class="message">Hello, there!</span> It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.
 {% endblock content%}

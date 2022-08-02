@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["egorsapon.pythonanywhere.com", "127.0.0.1"]
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,10 +43,10 @@ INSTALLED_APPS += [
     'book',
     'user_app',
     'crispy_forms',
-    'fontawesomefree',
     'crispy_bootstrap5',
+    'fontawesomefree',
+    'bootstrap5',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,16 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR / 'static')
+STATIC_ROOT = '/home/egorsapon/Django_test/static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/bs', 'static/ff'
-]
+    BASE_DIR / 'static',
+    ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+MEDIA_ROOT = '/home/egorsapon/Django_test/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

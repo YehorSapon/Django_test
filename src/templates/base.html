@@ -1,3 +1,5 @@
+{% load bootstrap5 %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +11,12 @@
     <meta name="keywords" content="books, seo, korsina">
     <meta name="author" content="Yehor Sapon">
     <title>{% block title %} Кнігі ў Ягора {% endblock title %}</title>
-    {% load static %}
-    <link href="{% static 'bs/css/bootstrap.min.css'%}" rel="stylesheet">
-    <link href="{% static 'bs/js/bootstrap.min.js' %}" >
-    <link href="{% static 'ff/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
   </head>
 </head>
 
@@ -23,21 +25,21 @@
     <main>
 
         {% include "base_navbar.html" %}
-        
+
         {% block header%}
             <br>
             HEADER
             <br>
+            {% block subheader %}
+            <br>
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            <br>
+            {% endblock subheader %}
         {% endblock header %}
-        <br>
-        {% block subheader %}
-        <br>
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        <br>
-        {% endblock subheader %}
+
         {% block content %}
         <br>
-        {% lorem 6 p random %}
+            {% lorem 6 p random %}
         <br>
         {% endblock content%}
 

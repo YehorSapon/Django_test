@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include
 from django.views.generic import RedirectView
+from proj.settings import DEBUG
 
 urlpatterns = [
     path('admin/', admin.site.urls), ]
@@ -25,8 +26,16 @@ urlpatterns = [
 urlpatterns += [
     path('', RedirectView.as_view(url='y_bookside/',
                                   permanent=True)),
-    path('y_bookside/', include('y_bookside.urls', namespace='y_bookside')),
-    path('reference/', include('reference.urls', namespace='reference')),
-    path('book/', include('book.urls', namespace='book')), ]
+    path('y_bookside/', include('y_bookside.urls',
+                                namespace='y_bookside')),
+    path('reference/', include('reference.urls',
+                               namespace='reference')),
+    path('book/', include('book.urls',
+                          namespace='book')), ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
