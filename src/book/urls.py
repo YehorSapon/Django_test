@@ -13,10 +13,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
+from django.urls import path, include
 from book import views
 app_name = 'book'
 
-urlpatterns = [
 
+books_patterns = ([
+    path('list/', views.BookList.as_view(), name='book-list'),
+    path('<int:pk>/', views.BookView.as_view(), name='book'),
+    path('del/<int:pk>/', views.BookDelete.as_view(), name='book-del'),
+    path('add/', views.BookAdd.as_view(), name='book-add'),
+    path('edit/<int:pk>/', views.BookEdit.as_view(), name='book-edit'),
+])
+
+urlpatterns = [
+    path('books/', include(books_patterns)),
 ]

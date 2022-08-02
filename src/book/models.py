@@ -10,6 +10,19 @@ COVER = (
     ('3', 'Hidebound'),
     ('4', 'Soft'),
 )
+AGE = (
+    ('1', '0+'),
+    ('2', '6+'),
+    ('3', '12+'),
+    ('4', '16+'),
+    ('5', '18+'),
+)
+FORMAT_BOOK = (
+    ('1', 'Foolscap octavo'),
+    ('2', 'Crown octavo'),
+    ('3', 'Demy octavo'),
+    ('4', 'Royal octavo '),
+)
 
 
 class BookCard(models.Model):
@@ -25,7 +38,7 @@ class BookCard(models.Model):
         related_name='seres_book')
     genre = models.ManyToManyField(
         Genre_book,
-        related_name='seres_book')
+        related_name='genre_book')
     title = models.CharField(
         max_length=255,
         help_text="Enter book title",
@@ -68,19 +81,30 @@ class BookCard(models.Model):
     create_date = models.DateTimeField(
         editable=False,
         help_text="Date of create book's card",
-        verbose_name="Date add card")
+        verbose_name="Date add card",
+        name="Date of create book card")
     update_date = models.DateTimeField(
         help_text="Enter publication year",
         verbose_name="Date add book")
     book_cover = models.CharField(
-        max_length=20,
+        verbose_name="Book cover",
+        max_length=10,
         choices=COVER,
-        default='soft')
-
+        default='4')
+    age_restrictions = models.CharField(
+        verbose_name="Age restrictions of book",
+        max_length=5,
+        choices=AGE,
+        default='1')
+    book_format = models.CharField(
+        verbose_name="Book format",
+        name="format",
+        max_length=5,
+        choices=FORMAT_BOOK,
+        default='1')
 
     class Meta:
-        ordering = ('-title',)
-
+        ordering = ['-title']
 
     def save(self, *args, **kwargs):
         """On save, update timestamps."""

@@ -46,13 +46,13 @@ class AuthorEdit(generic.UpdateView):
     template_name = "reference/author_add.html"
     model = models.Author
     form_class = forms.AddAuthorForm
-    success_url = "/reference/author/list/"
+    success_url = "reference/author/list/"
 
 
 class AuthorDelete(generic.DeleteView):
     template_name = "reference/author_del.html"
     model = models.Author
-    success_url = "/reference/author/list/"
+    success_url = "reference/author/list/"
 
 
 class AuthorAdd(generic.CreateView):

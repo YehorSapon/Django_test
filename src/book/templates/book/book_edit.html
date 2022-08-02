@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
+{% block title %}
+    {{ object }} edit
+{% endblock title %}
+
+
+{% block content %}
+    {{title}}
+    Add Author
+
+    {% crispy forms %}
+
+{% endblock content %}

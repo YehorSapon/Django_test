@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
-    {{ object.name }}
+    Book add
 {% endblock title %}
 
 
 {% block content %}
     {{title}}
-    Add Author
+    Add book
 <form action="" method="post">
         {% csrf_token %}
-        <table>
-        {{ form }}
-        </table>
+
+        {{ form|crispy }}
+
      <input type="submit" value="Submit" />
 </form>
 
 
 {% endblock content %}
-
