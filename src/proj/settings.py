@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from proj import prod_setting
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+
+SECRET_KEY = '5##230d0a1aso8y=p@(6_wxk=0*m12%3vq*b!1&q-gni2r$(5b'
+if not 'DEBUG':
+    SECRET_KEY = prod_setting.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -128,7 +132,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/egorsapon/Django_test/static'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    ]
+    BASE_DIR / 'y_bookside/static/',
+]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

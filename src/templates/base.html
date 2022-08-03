@@ -1,15 +1,17 @@
-{% load bootstrap5 %}
-{% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html lang="en" class="h-100">
+
+{% load bootstrap5 %}
+
+    {% load static %}
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Book shop">
     <meta name="keywords" content="books, seo, korsina">
     <meta name="author" content="Yehor Sapon">
+    <meta name="theme-color" content="#7952b3">
     <title>{% block title %} Кнігі ў Ягора {% endblock title %}</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -17,35 +19,27 @@
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-  </head>
 </head>
 
-<body>
-
-    <main>
-
-        {% include "base_navbar.html" %}
-
-        {% block header%}
-            <br>
-            HEADER
-            <br>
-            {% block subheader %}
-            <br>
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            <br>
-            {% endblock subheader %}
-        {% endblock header %}
-
-        {% block content %}
-        <br>
-            {% lorem 6 p random %}
-        <br>
-        {% endblock content%}
-
-    </main>
-    <footer>
-        FOOTER
-    </footer>
+<body class="d-flex flex-column h-100">
+<header>
+    {% block header%}
+    {% include "base_navbar.html" %}
+    <br>
+    HEADER
+    <br>
+    {% block subheader %}
+    <br>
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    <br>
+    {% endblock subheader %}
+    {% endblock header %}
+</header>
+<main class="flex-shrink-0">
+    {% include "base_main.html" %}
+</main>
+<footer class="footer mt-auto py-3 bg-light">
+    {% include "base_footer.html" %}
+</footer>
 </body>
 </html>
