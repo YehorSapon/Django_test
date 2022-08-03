@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
 {% block title %}
-    {{ object }} add
+    Author add
 {% endblock title %}
 
 
 {% block content %}
-    {{title}}
-    Add Author
+Author add
 <form action="" method="post">
         {% csrf_token %}
         <table>
-        {{ form }}
+        {{ form|crispy }}
         </table>
      <input type="submit" value="Submit" />
 </form>

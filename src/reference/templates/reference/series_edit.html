@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
     {{ object }} edit
 {% endblock title %}
@@ -11,7 +11,7 @@
     <form action="{% url 'reference:series-edit' series.pk %}" method="post">
         {% csrf_token %}
             <table>
-            {{ form }}
+            {{ form|crispy }}
             </table>
         <input type="submit" value="Submit" class="btn btn-success"/>
     </form>

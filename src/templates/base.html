@@ -16,15 +16,29 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% bootstrap_messages %}
+    <link href="{% static 'css/sticky-footer.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
-
+<style>
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+</style>
 </head>
 
 <body class="d-flex flex-column h-100">
-<header>
-    {% block header%}
+<header >
     {% include "base_navbar.html" %}
+    {% block header%}
     <br>
     HEADER
     <br>
@@ -36,7 +50,10 @@
     {% endblock header %}
 </header>
 <main class="flex-shrink-0">
-    {% include "base_main.html" %}
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+      </div>
 </main>
 <footer class="footer mt-auto py-3 bg-light">
     {% include "base_footer.html" %}

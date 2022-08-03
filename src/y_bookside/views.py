@@ -1,7 +1,7 @@
 from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
-from y_bookside.forms import LogMessageForm
 from django.views.generic import TemplateView
+from y_bookside.forms import LogMessageForm
 
 class HomePage(TemplateView):
     template_name = "y_bookside/home.html"

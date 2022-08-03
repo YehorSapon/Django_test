@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
 {% block title %}
-    {{ object }} edit
+Genre edit
 {% endblock title %}
 
 
 {% block content %}
     {{title}}
-    Add GENRE
+    Genre edit
     <form action="{% url 'reference:genre-edit' genre.pk %}" method="post">
         {% csrf_token %}
             <table>
-            {{ form }}
+                {{ form|crispy }}
             </table>
         <input type="submit" value="Submit" class="btn btn-success"/>
     </form>

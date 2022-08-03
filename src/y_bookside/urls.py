@@ -19,7 +19,7 @@ app_name = 'y_bookside'
 
 
 urlpatterns = [
-    path("", views.HomePage.as_view()),
+    path("", views.HomePage.as_view(), name="home"),
     path("log/", views.log_message, name="log"),
     path("about/", views.page_about, name="about"),
     path("contacts/", views.page_contacts, name="contacts"),
