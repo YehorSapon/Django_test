@@ -132,8 +132,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/egorsapon/Django_test/static'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    BASE_DIR / 'y_bookside/static/',
-]
+    'env/Lib/site-packages/django/contrib/admin/static/admin',
+    ]
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -145,3 +146,5 @@ MEDIA_ROOT = '/home/egorsapon/Django_test/media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Это регистрирует любые письма, отправленные на консоль (чтобы вы могли скопировать ссылку на сброс пароля с консоли)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

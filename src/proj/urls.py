@@ -33,7 +33,9 @@ urlpatterns += [
     path('book/', include('book.urls',
                           namespace='book')), ]
 
-
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
 if DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
