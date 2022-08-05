@@ -17,7 +17,7 @@
           <th scope="col">Edit</th>
           <th scope="col">Delete</th>
           <th scope="col">View detail</th>
-          <th scope="col">User</th>
+
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -29,7 +29,7 @@
                 <td><a href="{% url 'reference:genre-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
                 <td><a href="{% url 'reference:genre-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
                 <td><a href="{% url 'reference:genre' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
-                <td>{{user}}</td>
+
             </tr>
           {% endfor %}
       </tbody>
@@ -40,5 +40,5 @@
     <a href="{% url 'reference:genre-add' %}"><button type="button" class="btn btn-warning float-right">Add genre</button></a>
   </div>
   <br>
-    {% lorem 6 p random %}
+    {% lorem 1 p random %}
 {% endblock content %}

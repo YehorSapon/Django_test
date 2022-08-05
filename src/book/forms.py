@@ -1,8 +1,9 @@
+from book.models import BookCard
 from django import forms
 from django.views.generic import ListView
+from django.urls import reverse_lazy
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from book.models import BookCard
 
 
 class BookListView(ListView):
@@ -22,6 +23,6 @@ class AddBookForm(forms.ModelForm):
         self.helper.form_id = 'id-exampleForm'
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_action = 'submit_survey'
-
+        self.helper.form_action = 'book'
+        self.helper.help_text_inline = True
         self.helper.add_input(Submit('submit', 'Submit'))

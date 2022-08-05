@@ -8,28 +8,27 @@
 {% block subheader %}-----------------{% endblock subheader %}
 <br>
 {% block content %}
+{{object_list}}
     <table class="table table-sm">
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Surname</th>
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
             <th scope="col">View detail</th>
-            <th scope="col">User</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
-            {% for object in book_list %}
+            {% for object in bookcard_list %}
               <tr>
                   <th scope="row">{{object.pk}}</th>
-                  <td>{{object.name}}</td>
-                  <td>{{object.surname}}</td>
+                  <td>{{object.author}}</td>
+                  <td>{{object.title}}</td>
                   <td><a href="{% url 'book:book-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
                   <td><a href="{% url 'book:book-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
                   <td><a href="{% url 'book:book' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
-                  <td>{{user}}</td>
               </tr>
             {% endfor %}
         </tbody>
@@ -40,5 +39,5 @@
       <a href="{% url 'book:book-add' %}"><button type="button" class="btn btn-warning float-right">Add Book</button></a>
     </div>
     <br>
-    {% lorem 6 p random %}
+    {% lorem 1 p random %}
 {% endblock content %}
