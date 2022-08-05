@@ -34,7 +34,7 @@ class BookAdd(LoginRequiredMixin, generic.CreateView):
     template_name = "book/book_add.html"
     model = models.BookCard
     form_class = forms.AddBookForm
-    #success_url = "books/book-list/"
+    # success_url = "books/book-list/"
 
     def get_success_url(self):
         return reverse_lazy("book:book", kwargs={'pk': self.object.pk})
