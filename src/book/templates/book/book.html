@@ -9,10 +9,62 @@
 <br>
 {% block content %}
 <br>
-    <b>Name:</b> {{ object.name }}<br>
-    <b>Second name:</b> {{ object.second_name }}<br>
-    <b>Surname:</b> {{ object.surname }}<br>
-    <b>Date of birht:</b> {{ object.date_birth }}<br>
-    <b>Date of death:</b> {{ object.date_birth }}<br>
-    <a href="{% url 'book:book-list' %}">Book list</a>
+
+
+<table class="table table-sm">
+        <tr>
+          <th class="table-light" scope="col">Book title</th>
+          <td class="table-group-divider">{{ object.title }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Author</th>
+          <td class="table-group-divider">{{ object.author }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Publication house</th>
+          <td class="table-group-divider">{{ object.publ_hous }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Series</th>
+          <td class="table-group-divider">{{ object.series }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Genre</th>
+          <td class="table-group-divider">{{ object.genre }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Price</th>
+          <td class="table-group-divider">{{ object.price }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Publication year</th>
+          <td class="table-group-divider">{{ object.publ_year }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Pages</th>
+          <td class="table-group-divider">{{ object.pages }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Weight</th>
+          <td class="table-group-divider">{{ object.weight }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Avaiable to order</th>
+          <td class="table-group-divider">{{ object.is_available }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Book cover</th>
+          <td class="table-group-divider">{{ object.cover }}</td>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Age restrictions of book</th>
+          <td class="table-group-divider">{{ object.age_restrictions }}</td>
+        </tr>
+        <tr>
+            <th class="table-light" scope="col">Book format</th>
+            <td class="table-group-divider">{{ object.book_format }}</td>
+          </tr>
+      </table>
+
+      <a href="{% url 'book:book-list' %}"><input type="button" value="Book list"></a>
 {% endblock content %}

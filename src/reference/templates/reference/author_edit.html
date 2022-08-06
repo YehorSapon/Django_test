@@ -8,9 +8,9 @@ Author edit
 
 
 {% block content %}
-    {{title}}
     Author edit
-
-    {% crispy forms %}
-
+    <form action="" method="post">
+        {% crispy|forms %}
+    <input type="submit" value="Submit" class="btn btn-success"/>
+    </form>
 {% endblock content %}

@@ -7,7 +7,6 @@ Genre edit
 
 
 {% block content %}
-    {{title}}
     Genre edit
     <form action="{% url 'reference:genre-edit' genre.pk %}" method="post">
         {% csrf_token %}

@@ -133,7 +133,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/egorsapon/Django_test/static'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    'env/Lib/site-packages/django/contrib/admin/static/admin',
     ]
 
 

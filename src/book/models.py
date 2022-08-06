@@ -35,17 +35,14 @@ class BookCard(models.Model):
     publ_hous = models.ManyToManyField(
         PublishingHous,
         related_name='publ_house_book',
-        null=True,
         blank=True)
     series = models.ManyToManyField(
         Series_book,
         related_name='seres_book',
-        null=True,
         blank=True)
     genre = models.ManyToManyField(
         Genre_book,
         related_name='genre_book',
-        null=True,
         blank=True)
     title = models.CharField(
         max_length=255,
@@ -56,6 +53,7 @@ class BookCard(models.Model):
         decimal_places=2,
         help_text="Enter price in BYN",
         verbose_name="Book price",
+        default=1.00,
         null=True,
         blank=True)
     publ_year = models.DateField(
@@ -78,6 +76,7 @@ class BookCard(models.Model):
     weight = models.IntegerField(
         help_text="Enter weight in g",
         verbose_name="Weight",
+        default=1,
         null=True,
         blank=True)
     available_books = models.SmallIntegerField(
@@ -133,6 +132,7 @@ class BookCard(models.Model):
             self.created = timezone.now()
         self.modified = timezone.now()
         return super(BookCard, self).save(*args, **kwargs)
+
 
     def __str__(self):
         """Return self name."""

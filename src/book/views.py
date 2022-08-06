@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from book import models
-from . import forms
+from book import forms
 
 # Create your views here.
 
@@ -21,7 +21,7 @@ class BookEdit(LoginRequiredMixin, generic.UpdateView):
     template_name = "book/book_add.html"
     model = models.BookCard
     form_class = forms.AddBookForm
-    success_url = "book/books/list/"
+    success_url = "/book/books/list/"
 
 
 class BookDelete(LoginRequiredMixin, generic.DeleteView):

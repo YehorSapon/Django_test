@@ -8,9 +8,9 @@
 
 
 {% block content %}
-    {{title}}
     Book edit
+    <form action="" method="post">
+        {% crispy|forms %}
+    <input type="submit" value="Submit"/>
 
-    {% crispy forms %}
-    
 {% endblock content %}
