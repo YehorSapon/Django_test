@@ -28,7 +28,7 @@ if not 'DEBUG':
     SECRET_KEY = prod_setting.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["egorsapon.pythonanywhere.com", "127.0.0.1"]
 # Application definition
