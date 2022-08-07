@@ -30,12 +30,12 @@ urlpatterns += [
                                 namespace='y_bookside')),
     path('reference/', include('reference.urls',
                                namespace='reference')),
+    path('registration/', include('user_app.urls',
+                                  namespace='user_app')),
     path('book/', include('book.urls',
                           namespace='book')), ]
 
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
-]
+
 if DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)

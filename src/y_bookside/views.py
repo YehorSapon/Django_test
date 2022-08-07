@@ -36,7 +36,6 @@ def log_message(request):
     form = LogMessageForm(request.POST or None)
     context = {"form": form}
     if request.method == "POST":
-
         if form.is_valid():
             message = form.save(commit=False)
             message.log_date = datetime.now()

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% crispy example_form example_form.helper %}
+
 {% block title %}{% endblock title %}
 
 {% block header %}{% endblock header %}
@@ -23,19 +23,14 @@
   {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-
-<tr>
+<form method="post" action="{% url 'user_app:login' %}">
+  {% csrf_token %}
   {{ form|crispy }}
-</table>
-
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
+  <input type="submit" value="login" />
+  <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'user_app:password_reset' %}">Lost password?</a></p>
 
 {% endblock %}
