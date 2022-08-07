@@ -1,8 +1,8 @@
-from django.views import generic
-from . import forms
-from reference import models
-from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.views import generic
+from reference import forms
+from reference import models
 # from django.shortcuts import render
 # from django.http import HttpResponseRedirect
 
@@ -44,7 +44,7 @@ class AuthorView(generic.DetailView):
 
 
 class AuthorEdit(LoginRequiredMixin, generic.UpdateView):
-    template_name = "reference/author_add.html"
+    template_name = "reference/author_edit.html"
     model = models.Author
     form_class = forms.AddAuthorForm
     success_url = "/reference/author/list/"
@@ -53,7 +53,7 @@ class AuthorEdit(LoginRequiredMixin, generic.UpdateView):
 class AuthorDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "reference/author_del.html"
     model = models.Author
-    success_url = "reference/author/list/"
+    success_url = "/reference/author/list/"
 
 
 class AuthorAdd(LoginRequiredMixin, generic.CreateView):
@@ -101,7 +101,7 @@ class PublhView(generic.DetailView):
 
 
 class PublhEdit(LoginRequiredMixin, generic.UpdateView):
-    template_name = "reference/publh_add.html"
+    template_name = "reference/publh_edit.html"
     model = models.PublishingHous
     form_class = forms.AddPublhForm
     success_url = "/reference/publh/list/"
@@ -135,7 +135,7 @@ class SeriesView(generic.DetailView):
 
 
 class SeriesEdit(LoginRequiredMixin, generic.UpdateView):
-    template_name = "reference/series_add.html"
+    template_name = "reference/series_edit.html"
     model = models.Series_book
     form_class = forms.AddSeriesForm
     success_url = "/reference/series/list/"
@@ -169,7 +169,7 @@ class GenreView(generic.DetailView):
 
 
 class GenreEdit(LoginRequiredMixin, generic.UpdateView):
-    template_name = "reference/genre_add.html"
+    template_name = "reference/genre_edit.html"
     model = models.Genre_book
     form_class = forms.AddGenreForm
     success_url = "/reference/genre/list/"

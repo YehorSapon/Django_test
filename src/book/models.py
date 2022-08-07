@@ -1,8 +1,8 @@
 """Create yours models."""
 
-from django import forms
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 from reference.models import Author, PublishingHous, Series_book, Genre_book
 
 COVER = (
@@ -133,6 +133,9 @@ class BookCard(models.Model):
         self.modified = timezone.now()
         return super(BookCard, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('book', kwargs={'pk': self.pk},
+                       current_app='book')
 
     def __str__(self):
         """Return self name."""

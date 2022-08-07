@@ -4,14 +4,15 @@
     {{ object }} delete
 {% endblock title %}
 
-{% block header %} Delete author {{ object.surname }} ??{% endblock header %}
+{% block header %} Delete book {{ object }} ??{% endblock header %}
 
 {% block content %}
-    {{title}}
-    DELETE Author
-    <form action="" method="post">
-        {% csrf_token %}
-            <br>
-        <input type="submit" name="Submit" class="btn dtn-danger">
-    </form>
+DELETE {{ object.title }}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="bg-light clearfix">
+        <span>Click button to delete this Book</span>
+        <button type="submit" class="btn btn-warning float-right" >DELETE Book</button>
+    </div>
+</form>
 {% endblock content %}

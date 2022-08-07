@@ -1,5 +1,7 @@
 from django import forms
+from django.forms import DateInput
 from django.views.generic import ListView
+from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 from reference.models import Author, PublishingHous, Series_book, Genre_book
 
@@ -22,9 +24,16 @@ class AddAuthorForm(forms.ModelForm):
         ]
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(AddAuthorForm, self).__init__(*args, **kwargs)
+        self.fields['date_birth'].widget = forms.DateInput(
+            attrs={'type': 'date'})
+        self.fields['date_death'].widget = forms.DateInput(
+            attrs={'type': 'date'})
         self.helper = FormHelper()
         self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Add author', css_class='btn-primary'))
 
 
 class PublhListView(ListView):
@@ -41,6 +50,14 @@ class AddPublhForm(forms.ModelForm):
             'description',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(AddPublhForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Add publication hous', css_class='btn-primary'))
+
 
 class SeriesListView(ListView):
     queryset = Series_book.objects.all()
@@ -56,6 +73,14 @@ class AddSeriesForm(forms.ModelForm):
             'description',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(AddSeriesForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Add Series', css_class='btn-primary'))
+
 
 class GenreListView(ListView):
     queryset = Genre_book.objects.all()
@@ -70,3 +95,11 @@ class AddGenreForm(forms.ModelForm):
             'name',
             'description',
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(AddGenreForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Add Genre', css_class='btn-primary'))

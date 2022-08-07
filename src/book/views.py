@@ -18,7 +18,7 @@ class BookView(generic.DetailView):
 
 
 class BookEdit(LoginRequiredMixin, generic.UpdateView):
-    template_name = "book/book_add.html"
+    template_name = "book/book_edit.html"
     model = models.BookCard
     form_class = forms.AddBookForm
     success_url = "/book/books/list/"

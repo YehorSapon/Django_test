@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% crispy example_form example_form.helper %}
+
 {% block title %}
 Publishing Hous add
 {% endblock title %}
@@ -9,13 +9,10 @@ Publishing Hous add
 {% block content %}
     {{title}}
     Add Publishing Hous
-<form action="" method="post">
+
         {% csrf_token %}
-        <table>
-        {{ form|crispy }}
-        </table>
-<input type="submit" value="Submit" />
-</form>
+        {% crispy form form.helper %}
+
 
 
 {% endblock content %}

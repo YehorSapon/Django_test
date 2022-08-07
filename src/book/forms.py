@@ -1,9 +1,10 @@
-from book.models import BookCard
 from django import forms
+from django.forms import DateInput
 from django.views.generic import ListView
-#from django.urls import reverse_lazy
-from crispy_forms.helper import FormHelper
+from book.models import BookCard
 from crispy_forms.layout import Submit
+from crispy_forms.helper import FormHelper
+#from django.urls import reverse_lazy
 
 
 class BookListView(ListView):
@@ -17,9 +18,12 @@ class AddBookForm(forms.ModelForm):
         model = BookCard
         fields = '__all__'
 
-    @property
-    def helper(self):
-        helper = FormHelper()
-        helper.method = 'POST'
-        helper.add_input(Submit('save', 'save'))
-        return helper
+    def __init__(self, *args, **kwargs):
+        super(AddBookForm, self).__init__(*args, **kwargs)
+        self.fields['publ_year'].widget = forms.DateInput(
+            attrs={'type': 'date'})
+        self.helper = FormHelper()
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Add Book', css_class='btn-primary'))

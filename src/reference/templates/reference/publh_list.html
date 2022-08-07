@@ -14,15 +14,15 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
-      <th scope="col">Edit</th>
       <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
       <th scope="col">View detail</th>
     </tr>
   </thead>
   <tbody class="table-group-divider">
-      {% for object in publishing_hous_list %}
+      {% for object in publishinghous_list %}
         <tr>
-            <th scope="row">{{object.pk}}</th>
+            <th scope="col">{{object.pk}}</th>
             <td>{{object.name}}</td>
             <td>{{object.description}}</td>
             <td><a href="{% url 'reference:publh-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
@@ -38,5 +38,5 @@
 <a href="{% url 'reference:publh-add' %}"><button type="button" class="btn btn-warning float-right">Add Publising hous</button></a>
 </div>
 <br>
-    {% lorem 1 p random %}
+{% lorem 1 p random %}
 {% endblock content %}

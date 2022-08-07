@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% crispy example_form example_form.helper %}
+
 
 {% block title %}
     Book edit
 {% endblock title %}
 
-
-{% block content %}
+{% block header %}
     Book edit
-    <form action="" method="post">
-        {% crispy|forms %}
-    <input type="submit" value="Submit"/>
-
+{% endblock header %}
+{% block content %}
+    {{title}}
+    Book edit
+    {% csrf_token %}
+    {% crispy form %}
 {% endblock content %}

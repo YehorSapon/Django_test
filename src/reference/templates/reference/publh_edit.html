@@ -8,14 +8,7 @@
 
 {% block content %}
     {{title}}
-    Add Publising hous
-    <form action="{% url 'reference:publh' publh.pk %}" method="post">
-        {% csrf_token %}
-            <table>
-                {{ form|crispy }}
-            </table>
-        <input type="submit" value="Submit" class="btn btn-success"/>
-    </form>
-
-
+    Edit Publising hous
+    {% csrf_token %}
+    {% crispy form %}
 {% endblock content %}

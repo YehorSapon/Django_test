@@ -9,7 +9,7 @@ class Author(models.Model):
         verbose_name="Author's name")
     second_name = models.CharField(
         max_length=25,
-        help_text="Enter author name",
+        help_text="Enter second author name",
         null=True,
         blank=True)
     surname = models.CharField(

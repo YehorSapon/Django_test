@@ -7,11 +7,13 @@
 {% block header %} Delete author {{ object.surname }} ??{% endblock header %}
 
 {% block content %}
-    {{title}}
-    DELETE Author
+      DELETE Author
+    DELETE {{ object.name }}
     <form action="" method="post">
         {% csrf_token %}
-            <br>
-        <input type="submit" name="Submit" class="btn dtn-danger">
+        <div class="bg-light clearfix">
+            <span>Click button to delete this Author</span>
+            <button type="submit" class="btn btn-warning float-right" >DELETE Author</button>
+        </div>
     </form>
 {% endblock content %}

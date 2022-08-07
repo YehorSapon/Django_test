@@ -7,11 +7,12 @@
 {% block header %} Delete genre {{ object.name }} ??{% endblock header %}
 
 {% block content %}
-    {{title}}
-    DELETE GENRE
-    <form action="" method="post">
-        {% csrf_token %}
-            <br>
-        <input type="submit" name="Submit" class="btn dtn-danger">
-    </form>
+DELETE {{ object.name }}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="bg-light clearfix">
+        <span>Click button to delete this genre</span>
+        <button type="submit" class="btn btn-warning float-right" >DELETE genre</button>
+    </div>
+</form>
 {% endblock content %}
