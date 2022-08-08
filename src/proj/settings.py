@@ -138,7 +138,7 @@ if prod_setting.SERVER == 'prod':
     MEDIA_ROOT = '/home/egorsapon/Django_test/media'
 else:
     STATIC_URL = '/static/'
-    STATIC_ROOT = BASE_DIR / 'static'
+
     STATICFILES_DIRS = [
         BASE_DIR / 'static',
     ]

@@ -46,6 +46,7 @@ class AuthorView(generic.DetailView):
 class AuthorEdit(LoginRequiredMixin, generic.UpdateView):
     template_name = "reference/author_edit.html"
     model = models.Author
+    permission_required = "author.add_choice"
     form_class = forms.AddAuthorForm
     success_url = "/reference/author/list/"
 

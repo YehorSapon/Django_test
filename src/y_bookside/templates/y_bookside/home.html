@@ -10,8 +10,9 @@
 
 
     <p> <span class="btn btn-danger">Hello {{user}}, there!</span></p>
-    It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.
+    It's {% now "jS \o\f F H:i:s" %}.
     <br>
+    
     <br>
     {% lorem 2 p random %}
     {% if user.is_authenticated %}
