@@ -161,4 +161,4 @@ cython_debug/
 .djlintrc
 
 # Secret setting
-
+prod_setting.py
