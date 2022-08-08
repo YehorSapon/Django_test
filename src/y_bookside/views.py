@@ -19,6 +19,7 @@ class CaruselHomePage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        context["date"] = datetime.now()
         context["book_list"] = bmodels.BookCard.objects.all()
         return context
 

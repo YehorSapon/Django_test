@@ -23,14 +23,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = '5##230d0a1aso8y=p@(6_wxk=0*m12%3vq*b!1&q-gni2r$(5b'
-if not 'DEBUG':
-    SECRET_KEY = prod_setting.SECRET_KEY
+
+
+
+else:
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if  prod_setting.SERVER == 'prod':
+    DEBUG = prod_setting.DEBUG
+    ALLOWED_HOSTS = prod_setting.ALLOWED_HOSTS
+    SECRET_KEY = prod_setting.SECRET_KEY
+else:
+    ALLOWED_HOSTS = ['127.0.0.1']
+    DEBUG = True
+    SECRET_KEY = '5##230d0a1aso8y=p@(6_wxk=0*m12%3vq*b!1&q-gni2r$(5b'
 
-ALLOWED_HOSTS = ["egorsapon.pythonanywhere.com", "127.0.0.1"]
+
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -128,19 +138,29 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+if  prod_setting.SERVER == 'prod':
+    STATIC_URL = '/static/'
+    STATIC_ROOT = '/home/egorsapon/Django_test/static'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/egorsapon/Django_test/static'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    ]
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = '/home/egorsapon/Django_test/media'
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = 'static/'
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+        ]
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = 'media/'
+
+
+
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/egorsapon/Django_test/media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
