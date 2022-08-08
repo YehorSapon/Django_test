@@ -21,24 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 
 
 
 
-else:
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if  prod_setting.SERVER == 'prod':
+    # SECURITY WARNING: don't run with debug turned on in production!
+if prod_setting.SERVER == 'prod':
     DEBUG = prod_setting.DEBUG
     ALLOWED_HOSTS = prod_setting.ALLOWED_HOSTS
-    SECRET_KEY = prod_setting.SECRET_KEY
+    SECRET_KEY = prod_setting.SECRET_KEY # SECURITY WARNING: keep the secret key used in production secret!
 else:
     ALLOWED_HOSTS = ['127.0.0.1']
     DEBUG = True
     SECRET_KEY = '5##230d0a1aso8y=p@(6_wxk=0*m12%3vq*b!1&q-gni2r$(5b'
-
-
 
 
 # Application definition
@@ -138,7 +134,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-if  prod_setting.SERVER == 'prod':
+if prod_setting.SERVER == 'prod':
     STATIC_URL = '/static/'
     STATIC_ROOT = '/home/egorsapon/Django_test/static'
 
@@ -149,17 +145,13 @@ else:
     STATIC_ROOT = 'static/'
     STATICFILES_DIRS = [
         BASE_DIR / 'static',
-        ]
+    ]
     MEDIA_URL = '/media/'
     MEDIA_ROOT = 'media/'
 
 
-
-
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
 
 
 # Default primary key field type
