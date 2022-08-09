@@ -32,6 +32,8 @@ urlpatterns += [
                                namespace='reference')),
     path('registration/', include('user_app.urls',
                                   namespace='user_app')),
+    path('orders/', include('order.urls',
+                            namespace='order')),
     path('book/', include('book.urls',
                           namespace='book')), ]
 

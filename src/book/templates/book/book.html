@@ -67,7 +67,19 @@
         <tr>
             <th class="table-light" scope="col">Book format</th>
             <td class="table-group-divider">{{ object.book_format }}</td>
-          </tr>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Add book in cart </th>
+          <td class="table-group-divider">
+            <form action="{% url 'order:add-in-cart' %}" method="get">
+              <input type="hidden" name="book_id" value="{{ object.pk }}">
+              <div class="input-group ">
+                <input type="submit" class="btn btn-success col" value="Add in cart">
+                <input type="number" class="form-control col" name="Quantity" value="1" min="1" max="20">
+              </div>
+            </form>
+          </td>
+        </tr>
       </table>
 
       <a href="{% url 'book:book-list' %}"><input type="button" value="Book list"></a>

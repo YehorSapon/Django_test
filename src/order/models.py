@@ -9,23 +9,25 @@ class Cart(models.Model):
     # Create Cart
     customer = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
-        verbose_name='customer',
-        related_name='customers',
+        on_delete=models.PROTECT,
+        verbose_name='Customer',
+        related_name='usercarts', # By 'usercarts' we can see how many cart users have. Quantities Cart in User
     )
     create_date = models.DateField(
         auto_now_add=True,
+        verbose_name='Created order date',
         help_text='Date first create of Cart',
         blank=True,
         null=True,)
     update_date = models.DateField(
         auto_now=True,
+        verbose_name='Updated order date',
         help_text='Date update of Cart',
         blank=True,
         null=True,)
 
     def __str__(self):
-        return self.name
+        return self.customer + "/'s" + "cart"
 
 
 class BookInCart(models.Model):
@@ -34,13 +36,14 @@ class BookInCart(models.Model):
         'order.Cart',
         verbose_name='Books in Cart',
         on_delete=models.PROTECT,
-        related_name='carts', )
+        related_name='products_in', # By 'products_in' we can see how many books in cart. Quantities BookInCart in Cart
+        )
     book = models.ForeignKey(
         BookCard,
         on_delete=models.PROTECT,
         help_text='Book in Cart',
         verbose_name='Book',
-        related_name='books',)
+        related_name='books_in',)
     quantity = models.PositiveSmallIntegerField(
         verbose_name='Quantity books in cart',
         default=1,)
@@ -62,4 +65,4 @@ class BookInCart(models.Model):
         null=True,)
 
     def __str__(self):
-        return self.name
+        return self.cart
