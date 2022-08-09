@@ -32,17 +32,23 @@ class BookCard(models.Model):
     author = models.ManyToManyField(
         Author,
         related_name='author_book')
-    publ_hous = models.ManyToManyField(
+    publ_hous = models.ForeignKey(
         PublishingHous,
         related_name='publ_house_book',
+        on_delete = models.PROTECT,
+        null=True,
         blank=True)
-    series = models.ManyToManyField(
+    series = models.ForeignKey(
         Series_book,
         related_name='seres_book',
+        on_delete = models.PROTECT,
+        null=True,
         blank=True)
-    genre = models.ManyToManyField(
+    genre = models.ForeignKey(
         Genre_book,
         related_name='genre_book',
+        on_delete = models.PROTECT,
+        null=True,
         blank=True)
     title = models.CharField(
         max_length=255,

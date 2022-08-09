@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% crispy example_form example_form.helper %}
+
 {% block title %}Logged out{% endblock title %}
 
-{% block header %}{% endblock header %}
+{% block header %}Logged out{% endblock header %}
 
 <br>
 
@@ -12,5 +12,5 @@
 {% block content %}
 <p>Logged out!</p>
 
-<a href="{% url 'login'%}">Click here to login again.</a>
+<a href="{% url 'user_app:login' %}">Click here to login again.</a>
 {% endblock %}

@@ -15,8 +15,10 @@ Including another URLconf
 
 from django.urls import path, include
 from django.contrib import admin
+from user_app.views import ProfileView
 app_name = 'user_app'
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', ProfileView.as_view(), name='profile'),
 ]
