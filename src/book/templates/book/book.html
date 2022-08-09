@@ -10,7 +10,6 @@
 {% block content %}
 <br>
 
-
 <table class="table table-sm">
         <tr>
           <th class="table-light" scope="col">Book cover</th>
@@ -22,7 +21,14 @@
         </tr>
         <tr>
           <th class="table-light" scope="col">Author</th>
-          <td class="table-group-divider">{{ object.author }}</td>
+          <td class="table-group-divider">
+          {% if authors %}
+                      {% for author in authors %}
+                <a href="{% url 'reference:author' author.pk %}">{{ author.surname }}</a><br>
+            {% endfor%}
+        {% else%}
+            <p>There is no such information yet</p>
+        {% endif %}</td>
         </tr>
         <tr>
           <th class="table-light" scope="col">Publication house</th>

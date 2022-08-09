@@ -35,19 +35,19 @@ class BookCard(models.Model):
     publ_hous = models.ForeignKey(
         PublishingHous,
         related_name='publ_house_book',
-        on_delete = models.PROTECT,
+        on_delete=models.PROTECT,
         null=True,
         blank=True)
     series = models.ForeignKey(
         Series_book,
         related_name='seres_book',
-        on_delete = models.PROTECT,
+        on_delete=models.PROTECT,
         null=True,
         blank=True)
     genre = models.ForeignKey(
         Genre_book,
         related_name='genre_book',
-        on_delete = models.PROTECT,
+        on_delete=models.PROTECT,
         null=True,
         blank=True)
     title = models.CharField(

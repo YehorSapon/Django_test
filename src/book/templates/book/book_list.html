@@ -8,6 +8,7 @@
 {% block subheader %}-----------------{% endblock subheader %}
 <br>
 {% block content %}
+
     <table class="table table-sm">{{user}}
         <thead class="table-light">
           <tr>
@@ -23,7 +24,7 @@
             {% for object in bookcard_list %}
               <tr>
                   <th scope="row">{{object.pk}}</th>
-                  <td>{{object.author}}</td>
+                  <td>{{object.author_book.surname}}</td>
                   <td>{{object.title}}</td>
                   <td><a href="{% url 'book:book-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
                   <td><a href="{% url 'book:book-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>

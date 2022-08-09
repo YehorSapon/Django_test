@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from book import models
 from book import forms
+from reference import models as m
 
 # Create your views here.
 
@@ -11,10 +12,33 @@ class BookList(generic.ListView):
     template_name = "book/book_list.html"
     model = models.BookCard
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        return context
+
 
 class BookView(generic.DetailView):
     template_name = "book/book.html"
     model = models.BookCard
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        authors = self.object.author.all()
+        genres = self.object.genre
+        publishings = self.object.publ_hous
+
+        series = self.object.series
+        print(series)
+        if series:
+            series_m = m.Series_book.objects.get(name=series)
+            print(series_m)
+        else:
+            series_m = ""
+        context['authors'] = authors
+        context['genres'] = genres
+        context['publishings'] = publishings
+        context['series'] = series_m
+        return context
 
 
 class BookEdit(LoginRequiredMixin, generic.UpdateView):
