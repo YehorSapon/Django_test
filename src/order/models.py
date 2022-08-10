@@ -30,6 +30,7 @@ class Cart(models.Model):
         blank=True,
         null=True,)
 
+    @property
     def total_price(self):
         print(self.products_in.all())
         total = 0
@@ -75,5 +76,3 @@ class BookInCart(models.Model):
         help_text='Date last update of book in Cart',
         blank=True,
         null=True,)
-
-

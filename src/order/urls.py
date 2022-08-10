@@ -19,5 +19,8 @@ app_name = 'order'
 
 
 urlpatterns = [
-    path('add-in-cart/', views.AddToCart.as_view(), name='add-in-cart'),
-  ]
+    path('add-in-cart/',
+         views.AddToCart.as_view(), name='add-in-cart'),
+    path('delele-from-cart/<int:pk>',
+         views.DeleteFromCart.as_view(), name='delele-from-cart'),
+]

@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DeleteView, DetailView
+from django.urls import reverse_lazy
 from book.models import BookCard
 from order.models import Cart, BookInCart
 
@@ -46,4 +47,18 @@ class AddToCart(TemplateView):
 
         context = super().get_context_data(**kwargs)
         context['cart'] = cart
+        return context
+
+
+class DeleteFromCart(DeleteView):
+    template_name = "order/item_del.html"
+    model = BookInCart
+    success_url = reverse_lazy('order:add-in-cart')
+
+class UpdateCart(DetailView):
+    template_name = "order/cart.html"
+    model = Cart
+
+    def get_context_data(self):
+        context = super().get_context_data(**kwargs)
         return context
