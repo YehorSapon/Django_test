@@ -8,6 +8,27 @@
 {% block subheader %}-----------------{% endblock subheader %}
 <br>
 {% block content %}
+<table class="table">
+    <tr>
+        <th>Book title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    {% for item in cart.products_in.all %}
+    <tr>
+        <td>
+            {{item.book.title}}
+        </td>
+        <td>
+            {{item.quantity}}
+        </td>
+        <td>
+            {{item.price}}
+        </td>
+    </tr>
+    {% endfor %}
+    <tr><th colspan="2">Total</th>
+    <td>{{ cart.total_price }}</td></tr>
 
-asdasdasdas
+</table>
 {% endblock content %}

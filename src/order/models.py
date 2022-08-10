@@ -12,22 +12,32 @@ class Cart(models.Model):
         on_delete=models.PROTECT,
         verbose_name='Customer',
         related_name='usercarts', # By 'usercarts' we can see how many cart users have. Quantities Cart in User
+        blank=True,
+        null=True,
     )
     create_date = models.DateField(
         auto_now_add=True,
+        auto_now=False,
         verbose_name='Created order date',
         help_text='Date first create of Cart',
         blank=True,
         null=True,)
     update_date = models.DateField(
         auto_now=True,
+        auto_now_add=False,
         verbose_name='Updated order date',
         help_text='Date update of Cart',
         blank=True,
         null=True,)
 
-    def __str__(self):
-        return self.customer + "/'s" + "cart"
+    def total_price(self):
+        print(self.products_in.all())
+        total = 0
+        for book_in in self.products_in.all():
+            total += book_in.price
+        return total
+
+
 
 
 class BookInCart(models.Model):
@@ -55,14 +65,15 @@ class BookInCart(models.Model):
         null=True,)
     create_date = models.DateField(
         auto_now_add=True,
+        auto_now=False,
         help_text='Date first add book in Cart',
         blank=True,
         null=True,)
     update_date = models.DateField(
         auto_now=True,
+        auto_now_add=False,
         help_text='Date last update of book in Cart',
         blank=True,
         null=True,)
 
-    def __str__(self):
-        return self.cart
+
