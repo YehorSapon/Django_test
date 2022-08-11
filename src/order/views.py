@@ -7,26 +7,30 @@ from order.models import Cart, BookInCart
 # Create your views here.
 
 
+def get_cart(view):
+    cart_id = view.request.session.get('cart')
+    if not cart_id:
+        if view.request.user.is_anonymous:
+            customer = None
+        else:
+            customer = view.request.user
+        cart = Cart.objects.create(
+            customer=customer
+        )
+        view.request.session['cart'] = cart.pk
+    else:
+        cart = Cart.objects.get(pk=cart_id)
+    return cart
+
+
 class AddToCart(TemplateView):
     template_name = "order/cart.html"
 
     def get_context_data(self, **kwargs):
-
-        cart_id = self.request.session.get('cart')
         book_id = self.request.GET.get('book_id')
 
         # get a cart
-        if not cart_id:
-            if self.request.user.is_anonymous:
-                customer = None
-            else:
-                customer = self.request.user
-            cart = Cart.objects.create(
-                customer=customer
-            )
-            self.request.session['cart'] = cart.pk
-        else:
-            cart = Cart.objects.get(pk=cart_id)
+        cart = get_cart(self)
         # add book in the cart
         if book_id:
             book = BookCard.objects.get(pk=book_id)
@@ -55,10 +59,15 @@ class DeleteFromCart(DeleteView):
     model = BookInCart
     success_url = reverse_lazy('order:add-in-cart')
 
+
 class UpdateCart(DetailView):
     template_name = "order/cart.html"
-    model = Cart
+    model = BookInCart
 
-    def get_context_data(self):
+    def get_object(self, **kwargs):
+        cart = get_cart(self)
+        return cart
+
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
