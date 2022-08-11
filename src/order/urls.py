@@ -23,6 +23,6 @@ urlpatterns = [
          views.AddToCart.as_view(), name='add-in-cart'),
     path('delele-from-cart/<int:pk>',
          views.DeleteFromCart.as_view(), name='delele-from-cart'),
-    path('update-cart/<int:pk>',
+    path('update-cart/',
          views.UpdateCart.as_view(), name='update-cart'),
 ]
