@@ -6,7 +6,7 @@ from book import models
 
 @admin.register(models.BookCard)
 class BookCardAdmin(admin.ModelAdmin):
-    """Registration and representation of the model BookCard in the admin interface."""
+    """Registration and representation of the model BookCard in the interface."""
 
     list_display = ('title', 'publ_hous', 'display_authors',
                     'display_series', 'display_genres', 'publ_year',

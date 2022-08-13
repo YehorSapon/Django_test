@@ -27,11 +27,12 @@ class BookView(generic.DetailView):
         genres = self.object.genre.all()
         publh = self.object.publ_hous
         series = self.object.series.all()
-        context['authors'] = authors
-        context['genres'] = genres
-        context['publh'] = publh
-        context['series'] = series
-        return context
+        context = {
+            'authors': authors,
+            'genres': genres,
+            'publh': publh,
+            'series': series}
+        return context 
 
 
 class BookEdit(LoginRequiredMixin, generic.UpdateView):
@@ -44,7 +45,7 @@ class BookEdit(LoginRequiredMixin, generic.UpdateView):
 class BookDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "book/book_del.html"
     model = models.BookCard
-    success_url = "book/books/list/"
+    success_url = "/book/books/list/"
 
 
 class BookAdd(LoginRequiredMixin, generic.CreateView):

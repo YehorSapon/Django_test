@@ -32,15 +32,15 @@
         </tr>
         <tr>
           <th class="table-light" scope="col">Publication house</th>
-          <td class="table-group-divider">{{ object.publ_hous }}</td>
+          <td class="table-group-divider"><a href="{% url 'reference:publh' publh.pk %}">{{ object.publ_hous }}</a></td>
         </tr>
         <tr>
           <th class="table-light" scope="col">Series</th>
-          <td class="table-group-divider">{{ object.display_series }}</td>
+          <td class="table-group-divider">{% for ser in series %}<a href="{% url 'reference:series' ser.pk %}">{{ ser.name }}{% endfor %}</a></td>
         </tr>
         <tr>
           <th class="table-light" scope="col">Genre</th>
-          <td class="table-group-divider">{{ object.display_genres }}</td>
+          <td class="table-group-divider">{% for gen in genres %}<a href="{% url 'reference:genre' gen.pk %}">{{ gen.name }}{% endfor %}</a></td>
         </tr>
         <tr>
           <th class="table-light" scope="col">Price</th>
