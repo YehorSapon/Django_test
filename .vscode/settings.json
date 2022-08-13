@@ -1,8 +1,13 @@
 {
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "editor.formatOnSave": true,
     "emmet.includeLanguages": {
         "django-html": "html"
+    }
+    {
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true
+        }
     }
 }
