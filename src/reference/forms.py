@@ -9,6 +9,8 @@ from reference.models import Author, PublishingHous, Series_book, Genre_book
 class AuthorListView(ListView):
     queryset = Author.objects.all()
     context_object_name = 'author'
+    list_filter = 'author'
+    search_fields = ('name', 'surname')
     template_name = 'reference/author_list.html'
 
 
@@ -25,9 +27,9 @@ class AddAuthorForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddAuthorForm, self).__init__(*args, **kwargs)
-        self.fields['date_birth'].widget = forms.DateInput(
+        self.fields['date_birth'].widget = DateInput(
             attrs={'type': 'date'})
-        self.fields['date_death'].widget = forms.DateInput(
+        self.fields['date_death'].widget = DateInput(
             attrs={'type': 'date'})
         self.helper = FormHelper()
         self.helper.form_class = 'blueForms'

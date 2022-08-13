@@ -38,16 +38,14 @@ class BookCard(models.Model):
         on_delete=models.PROTECT,
         null=True,
         blank=True)
-    series = models.ForeignKey(
+    series = models.ManyToManyField(
         Series_book,
         related_name='seres_book',
-        on_delete=models.PROTECT,
         null=True,
         blank=True)
-    genre = models.ForeignKey(
+    genre = models.ManyToManyField(
         Genre_book,
         related_name='genre_book',
-        on_delete=models.PROTECT,
         null=True,
         blank=True)
     title = models.CharField(
@@ -143,6 +141,19 @@ class BookCard(models.Model):
         return reverse('book', kwargs={'pk': self.pk},
                        current_app='book')
 
+    def display_authors(self):
+        """Create a string for the Author. This is required to display author if they more then one."""
+        return ', '.join(author.surname for author in self.author.all()[:5])
+    display_authors.short_description = 'Authors'
+
+    def display_genres(self):
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    display_genres.short_description = 'Genres'
+
+    def display_series(self):
+        return ', '.join(series.name for series in self.series.all()[:3])
+    display_series.short_description = 'Series'
+
     def __str__(self):
-        """Return self name."""
+        """Return instance BookCard name."""
         return self.title

@@ -24,20 +24,13 @@ class BookView(generic.DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         authors = self.object.author.all()
-        genres = self.object.genre
-        publishings = self.object.publ_hous
-
-        series = self.object.series
-        print(series)
-        if series:
-            series_m = m.Series_book.objects.get(name=series)
-            print(series_m)
-        else:
-            series_m = ""
+        genres = self.object.genre.all()
+        publh = self.object.publ_hous
+        series = self.object.series.all()
         context['authors'] = authors
         context['genres'] = genres
-        context['publishings'] = publishings
-        context['series'] = series_m
+        context['publh'] = publh
+        context['series'] = series
         return context
 
 
