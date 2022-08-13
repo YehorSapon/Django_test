@@ -31,8 +31,8 @@ class BookView(generic.DetailView):
             'authors': authors,
             'genres': genres,
             'publh': publh,
-            'series': series}
-        return context 
+            'series': series,}
+        return context
 
 
 class BookEdit(LoginRequiredMixin, generic.UpdateView):
