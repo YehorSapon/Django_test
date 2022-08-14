@@ -41,12 +41,10 @@ class BookCard(models.Model):
     series = models.ManyToManyField(
         Series_book,
         related_name='seres_book',
-        null=True,
         blank=True)
     genre = models.ManyToManyField(
         Genre_book,
         related_name='genre_book',
-        null=True,
         blank=True)
     title = models.CharField(
         max_length=255,

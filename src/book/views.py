@@ -27,11 +27,10 @@ class BookView(generic.DetailView):
         genres = self.object.genre.all()
         publh = self.object.publ_hous
         series = self.object.series.all()
-        context = {
-            'authors': authors,
-            'genres': genres,
-            'publh': publh,
-            'series': series,}
+        context['authors'] = authors
+        context['genres'] = genres
+        context['publh'] = publh
+        context['series'] = series
         return context
 
 
