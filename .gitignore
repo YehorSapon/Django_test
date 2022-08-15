@@ -160,5 +160,9 @@ cython_debug/
 .idea/
 .djlintrc
 
+# VScode
+.vscode
+
 # Secret setting
 prod_setting.py
+local_setting.py
