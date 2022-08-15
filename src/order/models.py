@@ -33,7 +33,6 @@ class Cart(models.Model):
 
     @property
     def total_price(self):
-        print(self.products_in.all())
         total = 0
         for book_in in self.products_in.all():
             total += book_in.price
