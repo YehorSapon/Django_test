@@ -137,15 +137,11 @@ USE_TZ = True
 if prod_setting.SERVER == 'prod':
     STATIC_URL = '/static/'
     STATIC_ROOT = '/home/egorsapon/Django_test/static'
-
     MEDIA_URL = '/media/'
     MEDIA_ROOT = '/home/egorsapon/Django_test/media'
 else:
     STATIC_URL = '/static/'
-
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ]
+    STATICFILES_DIRS = [ BASE_DIR / 'static', ]
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
