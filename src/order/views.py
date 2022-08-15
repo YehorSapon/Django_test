@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from book.models import BookCard
-from order.models import Cart, BookInCart
+from order.models import Cart, BookInCart, Order
 
 # Create your views here.
 
@@ -66,7 +67,26 @@ class UpdateCart(DetailView):
 
     def get_object(self, **kwargs):
         cart = get_cart(self)
+        for prod in self.request.GET.keys():
+            if prod[:5] == "prod_":
+                book_pk = prod.split('__')[1]
+                book_update_in_cart = BookInCart.objects.get(pk = int(book_pk))
+                book_update_in_cart.quantity = int(self.request.GET.get(prod))
+                book_update_in_cart.price = BookCard.objects.get(pk=book_pk).price * book_update_in_cart.quantity
+                book_update_in_cart.save()
+        action_type = self.request.GET.get('action-type')
+        if action_type == 'Order':
+            order = Order.objects.create(
+                cart=book_update_in_cart.cart,
+            )
+            self.request.session.delete('cart')
         return cart
+
+    def render_to_response(self, context, **kwargs):
+        action_type = self.request.GET.get('action-type')
+        if action_type == 'Order':
+            return HttpResponseRedirect("/")
+        return super().render_to_response(context, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

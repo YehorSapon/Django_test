@@ -11,7 +11,8 @@ class Cart(models.Model):
         User,
         on_delete=models.PROTECT,
         verbose_name='Customer',
-        related_name='usercarts', # By 'usercarts' we can see how many cart users have. Quantities Cart in User
+        # By 'usercarts' we can see how many cart users have. Quantities Cart in User
+        related_name='usercarts',
         blank=True,
         null=True,
     )
@@ -39,16 +40,15 @@ class Cart(models.Model):
         return total
 
 
-
-
 class BookInCart(models.Model):
     # Create book information in cart
     cart = models.ForeignKey(
         'order.Cart',
-        verbose_name='Books in Cart',
+        verbose_name='Cart',
         on_delete=models.PROTECT,
-        related_name='products_in', # By 'products_in' we can see how many books in cart. Quantities BookInCart in Cart
-        )
+        # By 'products_in' we can see how many books in cart. Quantities BookInCart in Cart
+        related_name='products_in',
+    )
     book = models.ForeignKey(
         BookCard,
         on_delete=models.PROTECT,
@@ -64,6 +64,26 @@ class BookInCart(models.Model):
         decimal_places=2,
         blank=True,
         null=True,)
+    create_date = models.DateField(
+        auto_now_add=True,
+        auto_now=False,
+        help_text='Date first add book in Cart',
+        blank=True,
+        null=True,)
+    update_date = models.DateField(
+        auto_now=True,
+        auto_now_add=False,
+        help_text='Date last update of book in Cart',
+        blank=True,
+        null=True,)
+
+
+class Order(models.Model):
+    cart = models.ForeignKey(
+        'order.Cart',
+        verbose_name='Cart',
+        on_delete=models.CASCADE,
+        related_name='orders',)
     create_date = models.DateField(
         auto_now_add=True,
         auto_now=False,
