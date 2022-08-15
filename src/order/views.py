@@ -70,9 +70,10 @@ class UpdateCart(DetailView):
         for prod in self.request.GET.keys():
             if prod[:5] == "prod_":
                 book_pk = prod.split('__')[1]
-                book_update_in_cart = BookInCart.objects.get(pk = int(book_pk))
+                book_update_in_cart = BookInCart.objects.get(pk=int(book_pk))
                 book_update_in_cart.quantity = int(self.request.GET.get(prod))
-                book_update_in_cart.price = BookCard.objects.get(pk=book_pk).price * book_update_in_cart.quantity
+                book_update_in_cart.price = BookCard.objects.get(
+                    pk=book_pk).price * book_update_in_cart.quantity
                 book_update_in_cart.save()
         action_type = self.request.GET.get('action-type')
         if action_type == 'Order':
