@@ -7,6 +7,7 @@
 {% block header %} Delete author {{ object.surname }} ??{% endblock header %}
 
 {% block content %}
+{% if user.is_staff %}
       DELETE Author
     DELETE {{ object.name }}
     <form action="" method="post">
@@ -16,4 +17,5 @@
             <button type="submit" class="btn btn-warning float-right" >DELETE Author</button>
         </div>
     </form>
+    {% endif %}
 {% endblock content %}

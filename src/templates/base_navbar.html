@@ -84,10 +84,21 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          {% if user.is_staff %}
           <li class="nav-item">
             <a class="nav-link disabled">For staff only</a>
           </li>
-        </ul>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="nav-item"> <a class="nav-link active" href="#">User: {{ user.get_username }}</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'user_app:logout'%}?next={{request.path}}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'user_app:login'%}?next={{request.path}}">Login</a></li>
+          {% endif %}
+
+      </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn active btn-outline-dark" type="submit">Search</button>

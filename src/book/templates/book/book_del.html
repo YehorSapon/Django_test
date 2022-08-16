@@ -8,6 +8,7 @@
 
 {% block content %}
 DELETE {{ object.title }}
+{% if user.is_staff %}
 <form action="" method="post">
     {% csrf_token %}
     <div class="bg-light clearfix">
@@ -15,4 +16,5 @@ DELETE {{ object.title }}
         <button type="submit" class="btn btn-warning float-right" >DELETE Book</button>
     </div>
 </form>
+{% endif %}
 {% endblock content %}

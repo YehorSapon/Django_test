@@ -8,7 +8,9 @@
 
 {% block content %}
     {{title}}
-    Edit Publising hous
-    {% csrf_token %}
-    {% crispy form %}
+{% if user.is_staff %}
+Edit Publising hous
+{% csrf_token %}
+{% crispy form %}
+{% endif %}
 {% endblock content %}

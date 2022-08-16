@@ -15,29 +15,35 @@
             <th scope="col">#</th>
             <th scope="col">Authors</th>
             <th scope="col">Title</th>
+            {% if user.is_staff %}
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
+            {% endif %}
             <th scope="col">View detail</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
-            {% for object in bookcard_list %}
-              <tr>
-                  <th scope="row">{{object.pk}}</th>
-                  <td>{{object.display_authors}}</td>
-                  <td>{{object.title}}</td>
-                  <td><a href="{% url 'book:book-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
-                  <td><a href="{% url 'book:book-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+          {% for object in bookcard_list %}
+          <tr>
+            <th scope="row">{{object.pk}}</th>
+            <td>{{object.display_authors}}</td>
+            <td>{{object.title}}</td>
+            {% if user.is_staff %}
+            <td><a href="{% url 'book:book-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
+            <td><a href="{% url 'book:book-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+            {% endif %}
                   <td><a href="{% url 'book:book' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
               </tr>
             {% endfor %}
         </tbody>
     </table>
     <br>
+    {% if user.is_staff %}
     <div class="bg-light clearfix">
       <span>Click button to add book</span>
       <a href="{% url 'book:book-add' %}"><button type="button" class="btn btn-warning float-right">Add Book</button></a>
     </div>
+    {% endif %}
     <br>
     {% lorem 1 p random %}
 {% endblock content %}

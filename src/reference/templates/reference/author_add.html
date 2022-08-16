@@ -8,8 +8,9 @@
 
 {% block content %}
 Author add
-
-        {% csrf_token %}
-        {% crispy form %}
+{% if user.is_staff  %}
+{% csrf_token %}
+{% crispy form %}
+{% endif %}
 
 {% endblock content %}

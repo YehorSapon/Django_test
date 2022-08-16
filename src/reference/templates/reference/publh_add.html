@@ -8,10 +8,12 @@ Publishing Hous add
 
 {% block content %}
     {{title}}
+    {% if user.is_staff %}
     Add Publishing Hous
 
-        {% csrf_token %}
-        {% crispy form form.helper %}
+    {% csrf_token %}
+    {% crispy form form.helper %}
+    {% endif %}
 
 
 

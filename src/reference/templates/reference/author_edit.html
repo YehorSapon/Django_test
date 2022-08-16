@@ -8,8 +8,10 @@ Author edit
 
 
 {% block content %}
-    Author edit
-    
-        {% crispy form form.helper %}
+{% if user.is_staff %}
+Author edit
 
+{% crispy form form.helper %}
+
+{% endif %}
 {% endblock content %}

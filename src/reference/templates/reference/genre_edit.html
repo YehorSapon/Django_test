@@ -7,7 +7,9 @@ Genre edit
 
 
 {% block content %}
-    Genre edit
-        {% csrf_token %}
-        {% crispy form %}
+{% if user.is_staff %}
+Genre edit
+{% csrf_token %}
+{% crispy form %}
+{% endif %}
 {% endblock content %}

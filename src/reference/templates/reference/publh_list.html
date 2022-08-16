@@ -25,18 +25,22 @@
             <th scope="col">{{object.pk}}</th>
             <td>{{object.name}}</td>
             <td>{{object.description}}</td>
+            {% if user.is_staff %}
             <td><a href="{% url 'reference:publh-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
             <td><a href="{% url 'reference:publh-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+            {% endif %}
             <td><a href="{% url 'reference:publh' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
         </tr>
       {% endfor %}
   </tbody>
 </table>
 <br>
+{% if user.is_staff %}
 <div class="bg-light clearfix">
-<span>Click button to add Publising hous</span>
-<a href="{% url 'reference:publh-add' %}"><button type="button" class="btn btn-warning float-right">Add Publising hous</button></a>
+  <span>Click button to add Publising hous</span>
+  <a href="{% url 'reference:publh-add' %}"><button type="button" class="btn btn-warning float-right">Add Publising hous</button></a>
 </div>
+{% endif %}
 <br>
 {% lorem 1 p random %}
 {% endblock content %}

@@ -8,14 +8,16 @@ Series add
 
 {% block content %}
     {{title}}
+    {% if user.is_staff %}
     Add Series
-<form action="" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         <table>
-        {{ form|crispy }}
+            {{ form|crispy }}
         </table>
-     <input type="submit" value="Submit" />
-</form>
+        <input type="submit" value="Submit" />
+    </form>
+    {% endif %}
 
 
 {% endblock content %}

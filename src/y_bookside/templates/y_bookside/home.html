@@ -14,14 +14,7 @@
     <br>
 
     <br>
-    
-    {% lorem 2 p random %}
-    {% if user.is_authenticated %}
-    <ul>
-        <li>User: {{ user.get_username }}</li>
-        <li><a href="{% url 'user_app:logout'%}?next={{request.path}}">Logout</a></li>
-      {% else %}
-        <li><a href="{% url 'user_app:login'%}?next={{request.path}}">Login</a></li>
-      {% endif %}
-     </ul>
+
+    {% lorem 1 p random %}
+
 {% endblock content %}

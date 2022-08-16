@@ -7,6 +7,7 @@
 {% block header %} Delete series {{ object.surname }} ??{% endblock header %}
 
 {% block content %}
+{% if user.is_staff %}
 DELETE {{ object.name }}
 <form action="" method="post">
     {% csrf_token %}
@@ -15,4 +16,5 @@ DELETE {{ object.name }}
         <button type="submit" class="btn btn-warning float-right" >DELETE Series</button>
     </div>
 </form>
+{% endif %}
 {% endblock content %}

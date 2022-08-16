@@ -8,12 +8,14 @@
 
 {% block content %}
 {{title}}
-    DELETE {{ object.name }}
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="bg-light clearfix">
-            <span>Click button to delete Publising hous</span>
-            <button type="submit" class="btn btn-warning float-right" >DELETE Publising hous</button>
-        </div>
-    </form>
+{% if user.is_staff %}
+DELETE {{ object.name }}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="bg-light clearfix">
+        <span>Click button to delete Publising hous</span>
+        <button type="submit" class="btn btn-warning float-right" >DELETE Publising hous</button>
+    </div>
+</form>
+{% endif %}
 {% endblock content %}

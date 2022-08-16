@@ -26,8 +26,10 @@
                 <th scope="row">{{object.pk}}</th>
                 <td>{{object.name}}</td>
                 <td>{{object.description}}</td>
+                {% if user.is_staff %}
                 <td><a href="{% url 'reference:genre-del' object.pk %}"><i class="fa-solid fa-trash-can"></i></a></td>
                 <td><a href="{% url 'reference:genre-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></td>
+                {% endif %}
                 <td><a href="{% url 'reference:genre' object.pk %}"><i class="fa-solid fa-eye"></i></a></td>
 
             </tr>
@@ -35,10 +37,12 @@
       </tbody>
   </table>
   <br>
+  {% if user.is_staff %}
   <div class="bg-light clearfix">
     <span>Click button to add genre</span>
     <a href="{% url 'reference:genre-add' %}"><button type="button" class="btn btn-warning float-right">Add genre</button></a>
   </div>
+  {% endif %}
   <br>
     {% lorem 1 p random %}
 {% endblock content %}
