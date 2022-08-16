@@ -2,7 +2,7 @@ from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from y_bookside.forms import LogMessageForm
-from book import models as bmodels
+from book import models as bm
 
 
 class HomePage(TemplateView):
@@ -10,7 +10,7 @@ class HomePage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context["book_list"] = bmodels.BookCard.objects.all()
+        context['book_list'] = bm.BookCard.objects.all()
         return context
 
 
@@ -19,8 +19,7 @@ class CaruselHomePage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context["date"] = datetime.now()
-        context["book_list"] = bmodels.BookCard.objects.all()
+        context["pic"] = bmodels.BookCard.objects.all()
         return context
 
 

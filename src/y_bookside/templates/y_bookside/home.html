@@ -7,13 +7,14 @@
 
 
 {% block content %}
-
+{% include "base_carusel.html" %}
 
     <p> <span class="btn btn-danger">Hello {{user}}, there!</span></p>
     It's {% now "jS \o\f F H:i:s" %}.
     <br>
-    
+
     <br>
+    
     {% lorem 2 p random %}
     {% if user.is_authenticated %}
     <ul>
