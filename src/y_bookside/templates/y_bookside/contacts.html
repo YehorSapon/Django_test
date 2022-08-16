@@ -3,8 +3,16 @@
 {% block title %}
     {{title}}
 {% endblock title %}
-
+{% block header %}{% endblock header %}
 {% block content %}
     <h1>Contacts!</h1>
-    It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.
+    <p>It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.</p>
+<p>e-mail: egorsapon@gmail.com</p>
+<p>telephone: +375 25 123-45-67</p>
+<p>adress: Minsk, Sverdlova str. 13</p>
+
+
+
+
+
 {% endblock content%}
