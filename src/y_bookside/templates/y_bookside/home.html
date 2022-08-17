@@ -16,5 +16,8 @@
     <br>
 
     {% lorem 1 p random %}
-
+    <br>
+    {% load currency %}
+    {% get_currency as cr %}
+    {{cr}}
 {% endblock content %}
