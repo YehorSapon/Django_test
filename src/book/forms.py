@@ -27,3 +27,18 @@ class AddBookForm(forms.ModelForm):
         self.helper.form_method = 'POST'
         self.helper.add_input(
             Submit('submit', 'Add Book', css_class='btn-primary'))
+
+class EditBookForm(forms.ModelForm):
+    class Meta:
+        model = BookCard
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(EditBookForm, self).__init__(*args, **kwargs)
+        self.fields['publ_year'].widget = forms.DateInput(
+            attrs={'type': 'date'})
+        self.helper = FormHelper()
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.add_input(
+            Submit('submit', 'Save the changes in book card', css_class='btn-primary'))
