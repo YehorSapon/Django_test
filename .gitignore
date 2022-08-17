@@ -166,3 +166,7 @@ cython_debug/
 # Secret setting
 prod_setting.py
 local_setting.py
+
+# Django
+media/
+static/

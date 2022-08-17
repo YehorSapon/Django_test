@@ -35,7 +35,7 @@
       {% else %}
       <div class="carousel-item" data-bs-interval="2000" >
       {% endif %}
-        <a href="{% url 'book:book' obj.pk %}"><img src="{{ obj.picture.url }}" class="d-block w-50" alt="{{ obj.title }}" style="display: block; margin-right: auto; margin-left: auto;" ></a>
+        <a href="{% url 'book:book' obj.pk %}"><img src="{{ obj.picture.url }}" class="d-block w-25" alt="{{ obj.title }}" style="display: block; margin-right: auto; margin-left: auto;" ></a>
       </div>
     {% endfor %}
   </div>
@@ -50,5 +50,3 @@
 
 
 </div>
-
-

@@ -19,5 +19,18 @@
     <br>
     {% load currency %}
     {% get_currency as cr %}
-    {{cr}}
+    <table class="table table-info table-striped">
+        <thead >
+            <tr>
+            <th>Currency exchange on </th>
+            <th>{% now "jS \o\f F" %}</th>
+            <th>{{cr.Cur_Name}}</th>
+            <th>1 {{cr.Cur_Abbreviation}}</th>
+            <th>{{cr.Cur_OfficialRate}} BYN</th>
+            </tr>
+        </thead>
+    </table>
+
+
+
 {% endblock content %}
