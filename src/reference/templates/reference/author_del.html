@@ -4,18 +4,28 @@
     {{ object }} delete
 {% endblock title %}
 
-{% block header %} Delete author {{ object.surname }} ??{% endblock header %}
+
+    {% block header %} <p align="center"> Delete author {{ object.surname }} ??</p>{% endblock header %}
+
 
 {% block content %}
+<center>
 {% if user.is_staff %}
-      DELETE Author
+    DELETE Author
     DELETE {{ object.name }}
-    <form action="" method="post">
+    <form action="" method="post" id="form-del">
         {% csrf_token %}
         <div class="bg-light clearfix">
             <span>Click button to delete this Author</span>
-            <button type="submit" class="btn btn-warning float-right" >DELETE Author</button>
+            <button type="button" class="btn btn-warning float-right" onclick='delAuthor()' >DELETE Author</button>
+            <script>
+                function delAuthor() {
+                    params=confirm("Are you sure ?")
+                    if (params){document.getElementById('form-del').submit()}
+                }
+            </script>
         </div>
     </form>
     {% endif %}
+</center>
 {% endblock content %}

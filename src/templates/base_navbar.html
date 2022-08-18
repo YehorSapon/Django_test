@@ -99,9 +99,10 @@
           {% endif %}
 
       </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn active btn-outline-dark" type="submit">Search</button>
+          <form class="d-flex" role="search" method=POST action="{% url 'search:search' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search book" aria-label="Search book" name="search_q">
+            <button class="btn active btn-outline-secondary" type="submit">Search </button>
           </form>
           <ul class="navbar-nav  mb-2 mb-lg-0">
             <i class="fa-solid fa-cart-shopping"></i>

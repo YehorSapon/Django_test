@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+{% block header %}Search{% endblock header %}
+
+{% block content %}
+<center>
+    {% if search_q %}
+    <h1>You searched for {{search}} </h1>
+    {% else %}
+    <h1>Hey! You forgot to search for a book ...</h1>
+    {% endif %}
+
+    <h1>Books search results: </h1>
+    {% for book in object_list %}
+    <ul><li>{{book.title}}</li>   {% endfor %}
+    </ul>
+</center>
+
+{% endblock content %}

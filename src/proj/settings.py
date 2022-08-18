@@ -47,6 +47,7 @@ INSTALLED_APPS += [
     'y_bookside',
     'reference',
     'book',
+    'search',
     'order',
     'user_app',
     'crispy_forms',
