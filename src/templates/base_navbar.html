@@ -95,12 +95,12 @@
             <a class="nav-link active" href="{% url 'user_app:logout'%}?next={{request.path}}">Logout</a>
           </li>
           {% else %}
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'user_app:login'%}?next={{request.path}}">Login</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'user_app:login' %}?next={{request.path}}">Login</a></li>
           {% endif %}
 
       </ul>
-          <form class="d-flex" role="search" method=POST action="{% url 'search:search' %}">
-            {% csrf_token %}
+          <form class="d-flex" role="search" method=POST action="{% url 'search:search-books' %}">
+              {% csrf_token %}
             <input class="form-control me-2" type="search" placeholder="Search book" aria-label="Search book" name="search_q">
             <button class="btn active btn-outline-secondary" type="submit">Search </button>
           </form>

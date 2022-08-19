@@ -19,6 +19,6 @@ app_name = 'search'
 
 
 urlpatterns = [
-    path('', views.SearchList.as_view(), name='search'),
+    path('', views.search_books, name='search-books'),
 
 ]

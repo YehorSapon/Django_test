@@ -6,16 +6,17 @@
 
 {% block content %}
 <center>
-    {% if search_q %}
-    <h1>You searched for {{search}} </h1>
-    {% else %}
-    <h1>Hey! You forgot to search for a book ...</h1>
-    {% endif %}
-
-    <h1>Books search results: </h1>
-    {% for book in object_list %}
-    <ul><li>{{book.title}}</li>   {% endfor %}
+    {% if search %}
+    <h1>You search for {{search}}... </h1>
+    </br>
+    <ul>
+    {% for res in results %}
+        <li><a href="{% url 'book:book' res.pk %}">{{res}}</a></li>
+        {% endfor %}
     </ul>
-</center>
+        {% else %}
+        <h1>Hey! You forgot search for a book </h1>
+        {% endif %}
 
+</center>
 {% endblock content %}
