@@ -83,15 +83,54 @@ class Order(models.Model):
         verbose_name='Cart',
         on_delete=models.CASCADE,
         related_name='orders',)
+    status = models.ForeignKey(
+        'order.OrderStatus',
+        verbose_name='Order status',
+        on_delete=models.PROTECT,
+        related_name='statuses',
+        blank=True,
+        null=True)
     create_date = models.DateField(
         auto_now_add=True,
         auto_now=False,
         help_text='Date first add book in Cart',
         blank=True,
-        null=True,)
+        null=True)
     update_date = models.DateField(
         auto_now=True,
         auto_now_add=False,
         help_text='Date last update of book in Cart',
         blank=True,
-        null=True,)
+        null=True)
+    address = models.CharField(
+        max_length=250,
+        verbose_name='Adress',
+        blank=True,
+        null=True)
+    paid = models.BooleanField(
+        default=False,
+        blank=True,
+        null=True)
+
+    class Meta:
+        ordering = ('-create_date',)
+        verbose_name_plural = 'Orders'
+
+    def __str__(self):
+        return f'Order {self.id}'
+
+
+class OrderStatus(models.Model):
+    title = models.CharField(
+        max_length=25,
+        help_text="Enter title oorder status",
+        verbose_name="Title order status",
+        blank=True,
+        null=True)
+    description = models.TextField(
+        verbose_name="Description",
+        blank=True,
+        null=True)
+
+    def __str__(self):
+        return self.title

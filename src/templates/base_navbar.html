@@ -72,7 +72,7 @@
             <a class="nav-link active" href="{% url 'book:book-list' %}">Catalog</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="{% if user.is_authenticated.is_superuser %}admin/{% else %}#{% endif %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               References
             </a>
             <ul class="dropdown-menu">

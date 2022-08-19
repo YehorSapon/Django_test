@@ -14,3 +14,11 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('cart', 'create_date', 'update_date')
     list_filter = ('create_date', 'update_date')
     search_fields = ('cart', 'create_date')
+
+@admin.register(models.OrderStatus)
+class OrderStatusAdmin(admin.ModelAdmin):
+    """Registration and representation of the model Order in the admin interface."""
+
+    list_display = ('title', 'description')
+    list_filter = ('title',)
+    search_fields = ('title',)
