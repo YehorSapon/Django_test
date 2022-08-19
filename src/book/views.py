@@ -39,13 +39,13 @@ class BookEdit(LoginRequiredMixin, generic.UpdateView):
     model = models.BookCard
     form_class = forms.EditBookForm
     login_url = reverse_lazy("user_app:login")
-    success_url = "/book/books/list/"
+    success_url = reverse_lazy("book:book-list")
 
 
 class BookDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "book/book_del.html"
     model = models.BookCard
-    success_url = "/book/books/list/"
+    success_url = reverse_lazy("book:book-list")
     login_url = reverse_lazy("user_app:login")
 
 
@@ -54,7 +54,7 @@ class BookAdd(LoginRequiredMixin, generic.CreateView):
     model = models.BookCard
     form_class = forms.AddBookForm
     login_url = reverse_lazy("user_app:login")
-    success_url = "books/book-list/"
+    success_url = reverse_lazy("book:book-list")
 
     def get_success_url(self):
         return reverse_lazy("book:book", kwargs={'pk': self.object.pk})

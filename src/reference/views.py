@@ -115,14 +115,13 @@ class PublhEdit(LoginRequiredMixin, generic.UpdateView):
     model = models.PublishingHous
     login_url = reverse_lazy("user_app:login")
     form_class = forms.AddPublhForm
-    success_url = "/reference/publh/list/"
-
+    success_url = reverse_lazy("reference:publh-list")
 
 class PublhDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "reference/publh_del.html"
     model = models.PublishingHous
     login_url = reverse_lazy("user_app:login")
-    success_url = "/reference/publh/list/"
+    success_url = reverse_lazy("reference:publh-list")
 
 
 class PublhAdd(LoginRequiredMixin, generic.CreateView):
@@ -154,13 +153,14 @@ class SeriesEdit(LoginRequiredMixin, generic.UpdateView):
     model = models.Series_book
     form_class = forms.AddSeriesForm
     login_url = reverse_lazy("user_app:login")
-    success_url = "/reference/series/list/"
+    success_url = reverse_lazy("reference:series-list")
+
 
 
 class SeriesDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "reference/series_del.html"
     model = models.Series_book
-    success_url = "/reference/series/list/"
+    success_url = reverse_lazy("reference:series-list")
     allow_empty = False
     login_url = reverse_lazy("user_app:login")
 
@@ -194,14 +194,14 @@ class GenreEdit(LoginRequiredMixin, generic.UpdateView):
     model = models.Genre_book
     login_url = reverse_lazy("user_app:login")
     form_class = forms.AddGenreForm
-    success_url = "/reference/genre/list/"
+    success_url = reverse_lazy("reference:genre-list")
 
 
 class GenreDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "reference/genre_del.html"
     model = models.Genre_book
     login_url = reverse_lazy("user_app:login")
-    success_url = "/reference/genre/list/"
+    success_url = reverse_lazy("reference:genre-list")
 
 
 class GenreAdd(LoginRequiredMixin, generic.CreateView):
