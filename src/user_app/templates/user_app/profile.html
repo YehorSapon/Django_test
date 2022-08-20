@@ -1,76 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% load static %}
-  <link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css">
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <title>Profile</title>
-</head>
-<body>
-  <div class="container">
-      <div class="row profile">
-      <div class="col-md-3">
-        <div class="profile-sidebar">
-          <!-- SIDEBAR USERPIC -->
-          <div class="profile-userpic">
-            <img src="{% static 'img/profile_user.jpg' %} " class="img-responsive" width="200" alt="">
-          </div>
-          <!-- END SIDEBAR USERPIC -->
-          <!-- SIDEBAR USER TITLE -->
-          <div class="profile-usertitle">
-            <div class="profile-usertitle-name">
-              {{user}}
-            </div>
-            <div class="profile-usertitle-job">
-              Developer
-            </div>
-          </div>
-          <!-- END SIDEBAR USER TITLE -->
-          <!-- SIDEBAR BUTTONS -->
-          <div class="profile-userbuttons">
-            <button type="button" class="btn btn-success btn-sm">Follow</button>
-            <button type="button" class="btn btn-danger btn-sm">Message</button>
-          </div>
-          <!-- END SIDEBAR BUTTONS -->
-          <!-- SIDEBAR MENU -->
-          <div class="profile-usermenu">
-            <ul class="nav">
-              <li class="active">
-                <a href="#">
-                <i class="glyphicon glyphicon-home"></i>
-                Overview </a>
-              </li>
-              <li>
-                <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                Account Settings </a>
-              </li>
-              <li>
-                <a href="#" target="_blank">
-                <i class="glyphicon glyphicon-ok"></i>
-                Tasks </a>
-              </li>
-              <li>
-                <a href="#">
-                <i class="glyphicon glyphicon-flag"></i>
-                Help </a>
-              </li>
-            </ul>
-          </div>
-          <!-- END MENU -->
+  {% load bootstrap5 %} {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Yehor Sapon" />
+    {% bootstrap_css %} {% bootstrap_javascript %} {% bootstrap_messages %}
+    <link
+      href="{% static 'css/sticky-footer.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <link
+      href="{% static 'fontawesomefree/css/all.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>Profile {{user.get_username}}</title>
+  </head>
+  <body class="bg-light">
+    <main class="container-md">
+      <div
+        class="d-flex align-items-center p-3 my-3 text-dark bg-purple rounded shadow-sm"
+      >
+        <img class="me-3" src="#" alt="User foto" width="50" height="50" />
+        <div class="lh-2 mx-auto">
+          <h1 class="h6 mb-0 text-dark lh-1">
+            <strong>Profile {{user.get_username}}</strong>
+          </h1>
+          <small>{{user.groups.all.0}} </small>
+        </div>
+        <div class="lh-2 mx-auto">
+          <h1 class="h6 mb-0 text-dark lh-1">
+            <strong>Registration date</strong>
+          </h1>
+          <small>{{user.date_joined}} </small>
+        </div>
+        <div class="lh-2 mx-auto">
+          <h1 class="h6 mb-0 text-dark lh-1"><strong>Last login</strong></h1>
+          <small> {{user.last_login}}</small>
+        </div>
+        <div class="lh-2 mx-auto">
+          <h1 class="h6 mb-0 text-dark lh-1">
+            {% if user.is_authenticated %}
+            <a class="nav-link active" href="{% url 'user_app:logout'%}?next=/">
+              Logout
+            </a>
+            {% endif %}
+          </h1>
         </div>
       </div>
-      <div class="col-md-9">
-              <div class="profile-content">
-           Some user related content goes here...
+
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h5 class="border-bottom pb-2 mb-0">Contact information</h5>
+        <div class="d-flex text-muted pt-3">
+          <svg
+            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+            width="32"
+            height="32"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 32x32"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <title>Name</title>
+            <rect width="100%" height="100%" fill="#007bff"></rect>
+            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+          </svg>
+
+          <p class="pb-3 mb-0 small lh-sm border-bottom">
+            <strong class="d-block text-gray-dark">
+              User's {{user.pk}} full name is 
+            </strong>
+            {{ user.get_full_name }}
+          </p>
+        </div>
+        <div class="d-flex text-muted pt-3">
+          <svg
+            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+            width="32"
+            height="32"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 32x32"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <title>Permissions</title>
+            <rect width="100%" height="100%" fill="#e83e8c"></rect>
+            <text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text>
+          </svg>
+
+          <div >
+                         
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark"> 
+                 There are {{ user.get_all_permissions|length }} user's permissions: </strong></p>
+            </button>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body"> 
+                {% for perm in user.get_all_permissions|dictsort:0  %}
+                {{perm|linebreaks}}
+                {% endfor %}
               </div>
+            </div>
+          </div>
+        
+           
+            
+        </div>
+        <div class="d-flex text-muted pt-3">
+          <svg
+            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+            width="32"
+            height="32"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 32x32"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#6f42c1"></rect>
+            <text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text>
+          </svg>
+
+          <p class="pb-3 mb-0 small lh-sm border-bottom">
+            <strong class="d-block text-gray-dark">@username</strong>
+            This user also gets some representative placeholder content. Maybe
+            they did something interesting, and you really want to highlight
+            this in the recent updates.
+          </p>
+        </div>
+        <small class="d-block text-end mt-3">
+          <a href="#">All updates</a>
+        </small>
       </div>
-    </div>
-  </div>
-  <br>
-  <br>
-</body>
+    </main>
+  </body>
 </html>

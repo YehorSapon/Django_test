@@ -1,112 +1,181 @@
-{% load static %}
-{% load bootstrap5 %}
+{% load static %} {% load bootstrap5 %}
 
 <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
     }
+  }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+      inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+  }
 
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
 
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
+  .bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+  }
 
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
 
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>
 
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-  </style>
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="{% static 'img/logo.svg' %}" class="logo_simple" width="80px" alt="Company Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'book:book-list' %}">Catalog</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="{% if user.is_authenticated.is_superuser %}admin/{% else %}#{% endif %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              References
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'reference:author-list' %}">Authors</a></li>
-              <li><a class="dropdown-item" href="{% url 'reference:series-list' %}">Series</a></li>
-              <li><a class="dropdown-item" href="{% url 'reference:genre-list' %}">Genres</a></li>
-              <li><a class="dropdown-item" href="{% url 'reference:publh-list' %}">Publishing house</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          {% if user.is_staff %}
-          <li class="nav-item">
-            <a class="nav-link disabled">For staff only</a>
-          </li>
-          {% endif %}
-          {% if user.is_authenticated %}
-          <li class="nav-item"> <a class="nav-link active" href="#">User: {{ user.get_username }}</a></li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'user_app:logout'%}?next={{request.path}}">Logout</a>
-          </li>
-          {% else %}
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'user_app:login' %}?next={{request.path}}">Login</a></li>
-          {% endif %}
-
-      </ul>
-          <form class="d-flex" role="search" method=POST action="{% url 'search:search-books' %}">
-              {% csrf_token %}
-            <input class="form-control me-2" type="search" placeholder="Search book" aria-label="Search book" name="search_q">
-            <button class="btn active btn-outline-secondary" type="submit">Search </button>
-          </form>
-          <ul class="navbar-nav  mb-2 mb-lg-0">
-            <i class="fa-solid fa-cart-shopping"></i>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img
+        src="{% static 'img/logo.svg' %}"
+        class="logo_simple"
+        width="80px"
+        alt="Company Logo"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'book:book-list' %}"
+            >Catalog</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link active dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            References
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'reference:author-list' %}"
+                >Authors</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'reference:series-list' %}"
+                >Series</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'reference:genre-list' %}"
+                >Genres</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'reference:publh-list' %}"
+                >Publishing house</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-      </div>
+        </li>
+        {% if user.is_staff %}
+        <li class="nav-item">
+          <a class="nav-link disabled">For staff only</a>
+        </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/"
+            >User: {{ user.get_username }}</a
+          >
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" href="#">User: {{ user.get_username }}</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            href="{% url 'user_app:logout'%}?next={{request.path}}"
+            >Logout</a
+          >
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'user_app:login' %}?next={{request.path}}"
+            >Login</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+      <form
+        class="d-flex"
+        role="search"
+        method="POST"
+        action="{% url 'search:search-books' %}"
+      >
+        {% csrf_token %}
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search book"
+          aria-label="Search book"
+          name="search_q"
+        />
+        <button class="btn active btn-outline-secondary" type="submit">
+          Search
+        </button>
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
