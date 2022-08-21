@@ -29,7 +29,6 @@ class AddToCart(TemplateView):
 
     def get_context_data(self, **kwargs):
         book_id = self.request.GET.get('book_id')
-
         # get a cart
         cart = get_cart(self)
         # add book in the cart

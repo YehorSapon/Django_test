@@ -11,11 +11,11 @@ class Cart(models.Model):
         User,
         on_delete=models.PROTECT,
         verbose_name='Customer',
-        # By 'usercarts' we can see how many cart users have. Quantities Cart in User
+        # By 'usercarts' we can see how many cart users have.
+        # Quantities Cart in User
         related_name='usercarts',
         blank=True,
-        null=True,
-    )
+        null=True,)
     create_date = models.DateField(
         auto_now_add=True,
         auto_now=False,
@@ -45,9 +45,9 @@ class BookInCart(models.Model):
         'order.Cart',
         verbose_name='Cart',
         on_delete=models.PROTECT,
-        # By 'products_in' we can see how many books in cart. Quantities BookInCart in Cart
-        related_name='products_in',
-    )
+        # By 'products_in' we can see how many books in cart.
+        # Quantities BookInCart in Cart
+        related_name='products_in',)
     book = models.ForeignKey(
         BookCard,
         on_delete=models.PROTECT,
