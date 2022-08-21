@@ -11,11 +11,8 @@ register = template.Library()
 def get_currency():
     """Add currency exchange on page."""
 
-    start = timezone.now()
     s = requests.Session()
     r = s.get(
-        'https://www.nbrb.by/')
-    soup = BeautifulSoup(r.content, 'html.parser')
-    finish = timezone.now()
-    delta = finish - start
+        'https://www.nbrb.by/api/exrates/rates/840?parammode=1').json()
+
     return r

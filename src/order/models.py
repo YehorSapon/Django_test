@@ -31,6 +31,15 @@ class Cart(models.Model):
         blank=True,
         null=True,)
 
+
+    class Meta:
+        ordering = ('-create_date',)
+        verbose_name = 'cart'
+        verbose_name_plural = 'carts'
+
+    def __str__(self):
+        return f'Cart {self.pk}'
+
     @property
     def total_price(self):
         total = 0
@@ -76,6 +85,13 @@ class BookInCart(models.Model):
         blank=True,
         null=True,)
 
+
+    class Meta:
+        ordering = ('-create_date',)
+        verbose_name_plural = 'Books'
+
+    def __str__(self):
+        return f'{self.book.title}#{self.pk}'
 
 class Order(models.Model):
     cart = models.ForeignKey(
