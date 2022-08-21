@@ -97,7 +97,7 @@ class Order(models.Model):
     cart = models.ForeignKey(
         'order.Cart',
         verbose_name='Cart',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='orders',)
     status = models.ForeignKey(
         'order.OrderStatus',
@@ -133,7 +133,7 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
 
     def __str__(self):
-        return f'Order {self.id}'
+        return f' Order #'
 
 
 class OrderStatus(models.Model):

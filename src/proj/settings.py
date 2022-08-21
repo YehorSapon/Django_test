@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 from proj import prod_setting
 import os
@@ -154,3 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Это регистрирует любые письма, отправленные на консоль
 # (чтобы вы могли скопировать ссылку на сброс пароля с консоли)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+LOGIN_REDIRECT_URL = '/registration/accounts/profile/'

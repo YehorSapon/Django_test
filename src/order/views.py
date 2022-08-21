@@ -74,7 +74,8 @@ class UpdateCart(DetailView):
                 book_update_in_cart.price = BookCard.objects.get(
                     pk=book_pk).price * book_update_in_cart.quantity
                 book_update_in_cart.save()
-
+            else:
+                pass
         action_type = self.request.GET.get('action-type')
         if action_type == 'Order':
             order = Order.objects.create(

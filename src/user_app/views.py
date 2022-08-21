@@ -9,6 +9,5 @@ from django.urls import reverse_lazy
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = "user_app/profile.html"
     model = models.User
-    success_url = reverse_lazy("user_app:profile")
     login_url = reverse_lazy("user_app:login")
-    
+
