@@ -118,4 +118,4 @@ class OrderDelete(LoginRequiredMixin, DeleteView):
     template_name = "reference/author_del.html"
     model = Order
     login_url = reverse_lazy("user_app:login")
-    #success_url = "/"
+    # success_url = "/"

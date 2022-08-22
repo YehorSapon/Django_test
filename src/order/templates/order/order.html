@@ -2,6 +2,13 @@
 
 {% block content %}
 {{user}}
+<br>
+    <b>Status:</b> {{ object.status }}<br>
+    <b>Create_date:</b> {{ object.create_date }}<br>
+    <b>Update_date:</b> {{ object.update_date }}<br>
+    <b>Address:</b> {{ object.address }}<br>
+    <b>Paid status:</b> {{ object.paid }}<br>
+    <b>Delete edit:</b><a href="{% url 'order:order-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></a>
 
-
+    <b>Delete order:</b> <a href="{% url 'order:order-delete' object.pk %}"><i class="fa-solid fa-trash-can"></i></a><br>
 {% endblock content %}

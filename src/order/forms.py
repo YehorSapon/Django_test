@@ -1,4 +1,4 @@
-from django.forms import DateInput, ModelForm
+from django.forms import ModelForm
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 from order.models import Order

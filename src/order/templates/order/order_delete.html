@@ -1,5 +1,28 @@
-{% block title %} Order {% endblock title %}
-{% block header %} Order {% endblock header %}
-{% block content %}
-{{user}}
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order {{user}} delete </title>
+</head>
+<body>
+    {% block content %}
+    {% block title %} Order {{user}} delete {% endblock title %}
+    <form action="" method="post" id="form-del">
+        {% csrf_token %}
+        <div class="bg-light clearfix">
+            <span>Click button to delete this Order</span>
+            <button type="button" class="btn btn-warning float-right" onclick='delOrder()' >DELETE Order</button>
+            <script>
+                function delOrder() {
+                    params=confirm("Are you sure ?")
+                    if (params){document.getElementById('form-del').submit()}
+                }
+            </script>
+        </div>
+    </form>
+    {% endblock content %}
+</body>
+</html>
+
