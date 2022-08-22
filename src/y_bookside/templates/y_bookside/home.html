@@ -15,9 +15,9 @@
 
     <br>
 
-    {% lorem 1 p random %}
+    
     <br>
-    {% load currency %}
+    {% comment %} {% load currency %}
     {% get_currency as cr %}
     <table class="table table-info table-striped">
         <thead >
@@ -29,7 +29,7 @@
             <th>{{cr.Cur_OfficialRate}} BYN</th>
             </tr>
         </thead>
-    </table>
+    </table> {% endcomment %}
 
 
 
