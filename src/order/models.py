@@ -137,7 +137,7 @@ class Order(models.Model):
                        current_app='order')
 
     def __str__(self):
-        return f'Order {self.cart.custumer} #'
+        return f'Order  #{self.pk}'
 
 
 class OrderStatus(models.Model):
