@@ -92,7 +92,9 @@ def edit_author_view(request):
     elif request.method == 'GET':
         author = models.Author.objects.get(pk=pk)
         form = forms.AddAuthorForm(author)
-        return render(request, 'item_add.html', context={'author': author, 'form': form})
+        return render(request,
+                      'item_add.html',
+                      context={'author': author, 'form': form})
 """
 
 # Publising House
@@ -116,6 +118,7 @@ class PublhEdit(LoginRequiredMixin, generic.UpdateView):
     login_url = reverse_lazy("user_app:login")
     form_class = forms.AddPublhForm
     success_url = reverse_lazy("reference:publh-list")
+
 
 class PublhDelete(LoginRequiredMixin, generic.DeleteView):
     template_name = "reference/publh_del.html"
@@ -154,7 +157,6 @@ class SeriesEdit(LoginRequiredMixin, generic.UpdateView):
     form_class = forms.AddSeriesForm
     login_url = reverse_lazy("user_app:login")
     success_url = reverse_lazy("reference:series-list")
-
 
 
 class SeriesDelete(LoginRequiredMixin, generic.DeleteView):

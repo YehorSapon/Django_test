@@ -1,5 +1,5 @@
-{% extends 'base.html' %} 
-{% block title %} Cart {% endblock title %} 
+{% extends 'base.html' %}
+{% block title %} Cart {% endblock title %}
 {% block header %} Cart {% endblock header %}
 {% block content %}
 <form action=" {% url 'order:update-cart' %} " method="get">
@@ -16,10 +16,9 @@
       <td>
         <input
           type="number"
-          name="prod__{{item.pk}}"
+          name="prod__{{item.book.pk}}"
           value="{{item.quantity}}"
-          min="1"
-        />
+          min="0" />
       </td>
       <td>
         <a href="{% url 'order:delele-from-cart' item.pk %}"
@@ -48,5 +47,12 @@
     name="action-type"
     class="btn btn-warning"
   />
+  <a href="{% url 'book:book-list' %}"><input type="button" class="btn btn-secondary" value="Back to books list"></a>
+
+</button>
+
 </form>
+<br>
+
+
 {% endblock content %}

@@ -31,14 +31,13 @@ class Cart(models.Model):
         blank=True,
         null=True,)
 
-
     class Meta:
         ordering = ('-create_date',)
         verbose_name = 'cart'
         verbose_name_plural = 'carts'
 
     def __str__(self):
-        return f'Cart {self.pk}'
+        return f'{self.customer.get_username(self)} cart {self.pk}'
 
     @property
     def total_price(self):
@@ -85,13 +84,13 @@ class BookInCart(models.Model):
         blank=True,
         null=True,)
 
-
     class Meta:
         ordering = ('-create_date',)
         verbose_name_plural = 'Books'
 
     def __str__(self):
         return f'{self.book.title}#{self.pk}'
+
 
 class Order(models.Model):
     cart = models.ForeignKey(
@@ -133,7 +132,7 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
 
     def __str__(self):
-        return f' Order #'
+        return f'Order {self.cart.custumer} #'
 
 
 class OrderStatus(models.Model):
