@@ -74,7 +74,7 @@
 
           <p class="pb-3 mb-0 small lh-sm border-bottom">
             <strong class="d-block text-gray-dark">
-              User's {{user.pk}} full name is 
+              User's {{user.pk}} full name is
             </strong>
             {{ user.get_full_name }}
           </p>
@@ -96,49 +96,29 @@
           </svg>
 
           <div >
-                         
+
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark"> 
+              <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">
                  There are {{ user.get_all_permissions|length }} user's permissions: </strong></p>
             </button>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body"> 
+              <div class="accordion-body">
                 {% for perm in user.get_all_permissions|dictsort:0  %}
                 {{perm|linebreaks}}
                 {% endfor %}
               </div>
             </div>
           </div>
-        
-           
-            
+
+
+
         </div>
         <div class="d-flex text-muted pt-3">
-          <svg
-            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
-            width="32"
-            height="32"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 32x32"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#6f42c1"></rect>
-            <text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text>
-          </svg>
-
-          <p class="pb-3 mb-0 small lh-sm border-bottom">
-            <strong class="d-block text-gray-dark">@username</strong>
-            This user also gets some representative placeholder content. Maybe
-            they did something interesting, and you really want to highlight
-            this in the recent updates.
+         <p>
+          {% include "order: order.html" %}
           </p>
         </div>
-        <small class="d-block text-end mt-3">
-          <a href="#">All updates</a>
-        </small>
+
       </div>
     </main>
   </body>

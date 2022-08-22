@@ -25,4 +25,10 @@ urlpatterns = [
          views.DeleteFromCart.as_view(), name='delele-from-cart'),
     path('update-cart/',
          views.UpdateCart.as_view(), name='update-cart'),
+    path('order/<int:pk>',
+         views.UpdateCart.as_view(), name='order'),
+    path('order/edit/<int:pk>/',
+         views.UpdateCart.as_view(), name='order-edit'),
+    path('order/del/<int:pk>/',
+         views.UpdateCart.as_view(), name='order-del'),
 ]

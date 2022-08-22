@@ -1,9 +1,12 @@
 # from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, DeleteView, DetailView
+from django.views.generic import TemplateView, DeleteView, DetailView, UpdateView
 from django.urls import reverse_lazy
 from book.models import BookCard
 from order.models import Cart, BookInCart, Order
+from order import forms
+
 
 # Create your views here.
 
@@ -93,3 +96,26 @@ class UpdateCart(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class OrderView(LoginRequiredMixin, DetailView):
+    template_name = "order/order.html"
+    model = Order
+    allow_empty = False
+    login_url = reverse_lazy("user_app:login")
+
+
+class OrderEdit(LoginRequiredMixin, UpdateView):
+    template_name = "order/order_edit.html"
+    model = Order
+    allow_empty = False
+    login_url = reverse_lazy("user_app:login")
+    form_class = forms.EditOrderForm
+    # success_url = "/reference/author/list/"
+
+
+class OrderDelete(LoginRequiredMixin, DeleteView):
+    template_name = "reference/author_del.html"
+    model = Order
+    login_url = reverse_lazy("user_app:login")
+    #success_url = "/"
