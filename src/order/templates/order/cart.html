@@ -16,14 +16,14 @@
       <td>
         <input
           type="number"
-          name="prod__{{item.book.pk}}"
+          name="prod__{{item.pk}}"
           value="{{item.quantity}}"
           min="0" />
       </td>
       <td>
-        <a href="{% url 'order:delele-from-cart' item.pk %}"
-          ><i class="fa-solid fa-trash-can"></i
-        ></a>
+        <a href="{% url 'order:delele-from-cart' item.pk %}">
+          <i class="fa-solid fa-trash-can"></i>
+        </a>
       </td>
       <td>{{item.price}}</td>
     </tr>
@@ -47,12 +47,7 @@
     name="action-type"
     class="btn btn-warning"
   />
-  <a href="{% url 'book:book-list' %}"><input type="button" class="btn btn-secondary" value="Back to books list"></a>
-
-</button>
-
 </form>
-<br>
-
-
+</br>
+<a href="{% url 'book:book-list' %}"><input type="button" class="btn btn-secondary" value="Back to books list"></a>
 {% endblock content %}

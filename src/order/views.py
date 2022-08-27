@@ -1,7 +1,11 @@
 # from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth import models
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, DeleteView, DetailView, UpdateView
+from django.views.generic import TemplateView, DeleteView
+from django.views.generic import DetailView, UpdateView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from book.models import BookCard
 from order.models import Cart, BookInCart, Order
@@ -29,6 +33,8 @@ def get_cart(view):
 
 class AddToCart(TemplateView):
     template_name = "order/cart.html"
+    model = Cart
+    success_url = reverse_lazy("order:add-to-cart")
 
     def get_context_data(self, **kwargs):
 
@@ -90,7 +96,10 @@ class UpdateCart(DetailView):
     def render_to_response(self, context, **kwargs):
         action_type = self.request.GET.get('action-type')
         if action_type == 'Order':
-            return HttpResponseRedirect("/")
+            if self.request.user.is_anonymous:
+                return HttpResponseRedirect('/')
+            else:
+                return HttpResponseRedirect(reverse_lazy("user_app:profile"))
         return super().render_to_response(context, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -98,24 +107,29 @@ class UpdateCart(DetailView):
         return context
 
 
+class OrdersList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    template_name = "order/order_list.html"
+    model = Order
+    permission_required = 'order.view_order'
+    login_url = reverse_lazy("user_app:login")
+
+
 class OrderView(LoginRequiredMixin, DetailView):
     template_name = "order/order.html"
     model = Order
-    allow_empty = False
     login_url = reverse_lazy("user_app:login")
 
 
 class OrderEdit(LoginRequiredMixin, UpdateView):
     template_name = "order/order_edit.html"
     model = Order
-    allow_empty = False
+    form_class = forms.OrderEditForm
     login_url = reverse_lazy("user_app:login")
-    form_class = forms.EditOrderForm
     # success_url = "/reference/author/list/"
 
 
 class OrderDelete(LoginRequiredMixin, DeleteView):
-    template_name = "reference/author_del.html"
+    template_name = "reference/order_del.html"
     model = Order
     login_url = reverse_lazy("user_app:login")
     # success_url = "/"

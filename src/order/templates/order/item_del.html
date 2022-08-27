@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Delete item{% endblock title %}
-
 {% block header %}Delete item{% endblock header %}
 
-{% block subheader %}-----------------{% endblock subheader %}
-
 {% block content %}
-<form action=" " method="post">
+<form action="" method="post">
     {% csrf_token %}
-<input type="submit" class="bth btn-danger" value="Are you sure?">
-
-
+    <input type="submit" class="bth btn-danger" value="Are you sure?">
 </form>
+
 {% endblock content %}

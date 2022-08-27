@@ -1,0 +1,31 @@
+
+
+{% block title %}Order list{% endblock title %}
+<br>
+{% block header %}Order list{% endblock header %}
+<br>
+{% block content %}
+<table class="table table-striped table-hover">
+  <thead>
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cart</th>
+          <th scope="col">Order status</th>
+          <th scope="col">Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for row in object_list %}
+      <tr>
+          <td><a href="{% url 'orders:order-view' row.pk %}">{{ row.pk }}</td>
+          <td><a href="{% url 'orders:order-view' row.pk %}">{{ row.cart }}</td>
+          <td><a href="{% url 'orders:order-view' row.pk %}">{{ row.status }}</td>
+          <td><a href="{% url 'orders:order-edit' row.pk %}">
+            <i class="bi bi-pencil-square"></i>Edit
+            <a href="{% url 'orders:order-delete' row.pk %}"><i class="bi bi-trash3"></i>Delete
+          </td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
