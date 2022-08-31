@@ -96,7 +96,7 @@ class BookCard(models.Model):
         editable=True,
         auto_now_add=True,
         help_text="Date of create book's card",
-        verbose_name="Date add card",
+        verbose_name="Date add card on site",
         name="Date of create book card")
     update_date = models.DateTimeField(
         help_text="Enter publication year",
@@ -126,7 +126,7 @@ class BookCard(models.Model):
         blank=True)
 
     class Meta:
-        ordering = ['-title']
+        ordering = ['Date of create book card']
 
     def save(self, *args, **kwargs):
         """On save, update timestamps."""

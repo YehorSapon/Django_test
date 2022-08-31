@@ -19,7 +19,7 @@ class CaruselHomePage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context["pic"] = bmodels.BookCard.objects.all()
+        context["pic"] = bmodels.BookCard.objects.all()[:3]
         return context
 
 
