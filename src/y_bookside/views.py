@@ -11,16 +11,17 @@ class HomePage(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['book_list'] = bm.BookCard.objects.all()
+        context['pic'] = bm.BookCard.objects.all()[:3]
         return context
 
 
-class CaruselHomePage(TemplateView):
-    template_name = "templates/base_carusel.html"
+# class CaruselHomePage(TemplateView):
+#     template_name = "templates/base_carusel.html"
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context["pic"] = bmodels.BookCard.objects.all()[:3]
-        return context
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(*args, **kwargs)
+#         context["pic"] = bmodels.BookCard.objects.all()[:3]
+#         return context
 
 
 def page_about(request):

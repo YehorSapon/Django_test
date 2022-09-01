@@ -113,7 +113,6 @@ class OrdersList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     permission_required = 'order.view_order'
     login_url = reverse_lazy("user_app:login")
 
-
 class OrderView(LoginRequiredMixin, DetailView):
     template_name = "order/order.html"
     model = Order
