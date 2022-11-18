@@ -1,14 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+</head>
+<body>
+    {% block content %}
+    {{user}}
+    <br>
+        <b>Status:</b> {{ object.status }}<br>
+        <b>Create_date:</b> {{ object.create_date }}<br>
+        <b>Update_date:</b> {{ object.update_date }}<br>
+        <b>Address:</b> {{ object.address }}<br>
+        <b>Paid status:</b> {{ object.paid }}<br>
+        <b>Delete edit:</b><a href="{% url 'order:order-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></a>
 
+        <b>Delete order:</b> <a href="{% url 'order:order-delete' object.pk %}"><i class="fa-solid fa-trash-can"></i></a><br>
+    {% endblock content %}
 
-{% block content %}
-{{user}}
-<br>
-    <b>Status:</b> {{ object.status }}<br>
-    <b>Create_date:</b> {{ object.create_date }}<br>
-    <b>Update_date:</b> {{ object.update_date }}<br>
-    <b>Address:</b> {{ object.address }}<br>
-    <b>Paid status:</b> {{ object.paid }}<br>
-    <b>Delete edit:</b><a href="{% url 'order:order-edit' object.pk %}"><i class="fa-solid fa-file-pen"></i></a></a>
-
-    <b>Delete order:</b> <a href="{% url 'order:order-delete' object.pk %}"><i class="fa-solid fa-trash-can"></i></a><br>
-{% endblock content %}
+</body>
+</html>

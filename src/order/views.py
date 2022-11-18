@@ -1,16 +1,15 @@
-# from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth import models
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, DeleteView
-from django.views.generic import DetailView, UpdateView
-from django.views.generic import ListView
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from book.models import BookCard
-from order.models import Cart, BookInCart, Order
-from order import forms
+from django.views.generic import (DeleteView, DetailView, ListView,
+                                  TemplateView, UpdateView)
 
+from book.models import BookCard
+from order import forms
+from order.models import BookInCart, Cart, Order
 
 # Create your views here.
 

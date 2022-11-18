@@ -1,10 +1,11 @@
-from book.models import BookCard
+from django.contrib.auth.models import get_user_model
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse
 
-# Create your models here.
+from book.models import BookCard
 
+# Create your models here.
+User = get_user_model()
 
 class Cart(models.Model):
     # Create Cart
@@ -37,15 +38,15 @@ class Cart(models.Model):
         verbose_name = 'cart'
         verbose_name_plural = 'carts'
 
-    def __str__(self):
-        return f' cart {self.pk}'
-
     @property
     def total_price(self):
         total = 0
         for book_in in self.products_in.all():
             total += book_in.price
         return total
+
+    def __str__(self):
+        return f'Cart {self.pk}'
 
 
 class BookInCart(models.Model):
@@ -90,7 +91,7 @@ class BookInCart(models.Model):
         verbose_name_plural = 'Books'
 
     def __str__(self):
-        return f'{self.book.title}#{self.pk}'
+        return f'Book "{self.book.title}" # {self.pk}'
 
 
 class Order(models.Model):
@@ -137,7 +138,7 @@ class Order(models.Model):
                        current_app='order')
 
     def __str__(self):
-        return f'Order #{self.pk}'
+        return f'Order # {self.pk}'
 
 
 class OrderStatus(models.Model):
