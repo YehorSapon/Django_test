@@ -58,8 +58,8 @@ class AddToCart(TemplateView):
             book_in_cart.price += book_in_cart.quantity * price
             book_in_cart.save()
 
+        context = super().get_context_data(**kwargs)
         context['cart'] = cart
-        context['book_in_cart'] = book_in_cart
         return context
 
 
@@ -88,7 +88,7 @@ class UpdateCart(DetailView):
         # next to check which button onclick
         action_type = self.request.GET.get('action-type')
         if action_type == 'Order':
-            Order.objects.create(cart=book_update_in_cart.cart,)
+            order = Order.objects.create(cart=book_update_in_cart.cart,)
             self.request.session.delete('cart')
         return cart
 
